@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+table {
+    border: 1px solid black;
+}
+th {
+    font-weight: normal;
+}
+td, th {
+    border: 1px solid grey;
+    padding: 1.5em;
+}

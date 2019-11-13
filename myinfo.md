@@ -3,4 +3,4 @@ Name: Krishna Upadhyay
 
 College: Pulchowk Campus, IOE
 
-Hobbies: Music, Games
+Hobbies: Music, Games, Movies

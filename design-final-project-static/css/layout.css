@@ -507,28 +507,80 @@ figure.overlay-image {
 /* User Feedback Section */
 
 .user-feedback-section {
-    width: 1920px;
+    /* width: 1920px; */
+    /* margin: auto; */
     background: #f8f8f8;
 }
 .user-feedback-container {
-    padding: 0px 20px;
-    display: inline-block;
+    padding: 68px 20px;
+    position: relative;
+    margin: auto;
 }
 
-.user-feedback-container.left-arrow {
-    font-size: 24px;
-    vertical-align: middle;
-    /* float: left; */
+.left-arrow {
+    font-size: 30px;
+    /* vertical-align: middle; */
+    position: absolute;
+    left: 20px;
+    top: 40.1315%;
+    display: block;
+
+}
+.right-arrow {
+    font-size: 30px;
+    /* vertical-align: middle; */
+    position: absolute;
+    right: 20px;
+    top: 40.1315%;
 }
 
-.user-feedback-container.right-arrow {
-    font-size: 24px;
-    vertical-align: middle;
-    /* float: right; */
-}
 
 .feedback-text-container {
     /* float: left; */
-    width: 1115px;
-    margin: auto;
+    position: relative;
+    width: 1060px;
+    font-size: 24px;
+    font-family: "Roboto", sans-serif;
+    color: #999999;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0px 100px;
+
+}
+
+.feedback-icon {
+    padding: 24px 40px;
+    border: 3px solid #95e1d3;
+    color: #95e1d3;
+    font-size: 64px;
+    display: inline-block;
+}
+.feedback-text {
+    position: relative;
+    display: inline-block;
+    width: 850px;
+    padding-left: 50px;
+}
+
+.feedback-text:after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    left: 50px;
+    bottom: -32px;
+    background: #f38181;
+}
+
+.user-name {
+    position: absolute;
+    left: 280px;
+    bottom: -2px;
+    color: #333333;
+    font-size: 24px;
+    font-family: "Kaushan Script", cursive;
+    line-height: 1.2;
+    font-style: normal;
+    font-weight: normal;
 }

@@ -4,22 +4,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Design Project</title>
+    <title>Design Project Responsive</title>
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-top">
-            <nav class="navbar">
-                <div class="navbar-header clearfix">
-                    <a class="navbar-logo" href="#">MoGo</a>
+    <header class="header-section">
+        <div class="outer-header">
+            <nav class="navbar clearfix">
+                <div class="navbar-logo">
+                    <a href="#">MoGo</a>
+                </div>
+                <div class="header-menu-wrapper">
+                    <ul class="header-menu">
+                        <li class="active"><a href="#">ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <li><a href="#">WORK</a></li>
+                        <li><a href="#">BLOG</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="#"><span class="mdi mdi-cart-outline"></span>
+                            </a></li>
+                        <li><a href="#"><span class="mdi mdi-magnify"></span>
+                            </a></li>
+                    </ul>
                 </div>
             </nav>
+            <section class="slider-section">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <div class="carousel-item-content">
+                            <span class="carousel-item-subheading">Creative Template</span>
+                            WELCOME <br>TO MOGO
+                        </div>
+
+                        <div class="carousel-item-button">
+                            <a href="#">LEARN MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-navigation-container clearfix">
+                    <ul class="carousel-navigation">
+                        <li><a href="#"><span class="number">01</span>INTRO</a></li>
+                        <li><a href="#"><span class="number">02</span>WORK</a></li>
+                        <li><a href="#"><span class="number">03</span>ABOUT</a></li>
+                        <li><a href="#"><span class="number">04</span>CONTACTS</a></li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </header>
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <h2 class="section-heading">
+                <span class="section-subheading">What we do</span><br>
+                STORY ABOUT US
+            </h2>
+            <div class="description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+            </div>
+            <div class="story-images-container clearfix">
+                <div class="image-content">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <span class="mdi mdi-account-multiple"></span><br> SUPER TEAM
+                        </div>
+                        <figure class="overlay-image">
+                            <img src="./images/story-image-1.png" alt="Story Image 1">
+                        </figure>
+                    </div>
+                    <figure class="story-image">
+                        <img src="./images/story-image-1.png" alt="Story Image 1">
+                    </figure>
+                </div>
+                <div class="image-content">
+                    <div class="image-overlay">
+                        <figure class="overlay-image">
+                            <img src="./images/story-image-2.png" alt="Story Image 1">
+                        </figure>
+                    </div>
+                    <figure class="story-image">
+                        <img src="./images/story-image-2.png" alt="Story Image 1">
+                    </figure>
+                </div>
+                <div class="image-content">
+                    <div class="image-overlay">
+                        <figure class="overlay-image">
+                            <img src="./images/story-image-3.png" alt="Story Image 1">
+                        </figure>
+                    </div>
+                    <figure class="story-image">
+                        <img src="./images/story-image-3.png" alt="Story Image 1">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Counter Section -->
+
+    <section class="counter-section">
+        <div class="container clearfix">
+            <div class="counter">
+                <div class="counter-number">42</div>
+                <div class="counter-type">WEB DESIGN PRODUCTS</div>
+            </div>
+            <div class="counter">
+                <div class="counter-number">123</div>
+                <div class="counter-type">HAPPY CLIENT</div>
+            </div>
+            <div class="counter">
+                <div class="counter-number">15</div>
+                <div class="counter-type">AWARD WINNER</div>
+            </div>
+            <div class="counter">
+                <div class="counter-number">99</div>
+                <div class="counter-type">CUP OF COFFEE</div>
+            </div>
+            <div class="counter">
+                <div class="counter-number">24</div>
+                <div class="counter-type">MEMBERS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="heading-container">
+                <h2 class="section-heading">
+                    <span class="section-subheading">We work with</span><br>
+                    AMAZING SERVICES
+                </h2>
+            </div>
+            <div class="services-container">
+                <div class="col3-services clearfix">
+                    <div class="service clearfix">
+                        <div class="service-icon">
+                            <span class="mdi mdi-alarm"></span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-heading">PHOTOGRAPHY</div>
+                            <div class="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do
+                                eiusmod tempor.</div>
+                        </div>
+                    </div>
+                    <div class="service clearfix">
+                        <div class="service-icon">
+                            <span class="mdi mdi-chart-line"></span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-heading">WEB DESIGN</div>
+                            <div class="service-description">Ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor.</div>
+                        </div>
+                    </div>
+                    <div class="service clearfix">
+                        <div class="service-icon">
+                            <span class="mdi mdi-monitor"></span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-heading">CREATIVITY</div>
+                            <div class="service-description">Dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor.</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="col3-services clearfix">
+                    <div class="service clearfix">
+                        <div class="service-icon">
+                            <span class="mdi mdi-book-open-variant"></span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-heading">SEO</div>
+                            <div class="service-description">Ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod.</div>
+                        </div>
+                    </div>
+                    <div class="service clearfix">
+                        <div class="service-icon">
+                            <span class="mdi mdi-home-variant"></span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-heading">CSS/HTML</div>
+                            <div class="service-description">Lorem dolor sit amet, consectetur adipiscing elit, sed do
+                                tempor.</div>
+                        </div>
+                    </div>
+                    <div class="service clearfix">
+                        <div class="service-icon">
+                            <span class="mdi mdi-image-filter-center-focus-weak"></span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-heading">DIGITAL</div>
+                            <div class="service-description">Sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Design Section -->
+    <section class="unique-design-section">
+        <div class="container unique-design-container">
+            <h2 class="section-heading">
+                <span class="section-subheading">For all devices</span><br>
+                UNIQUE DESIGN
+            </h2>
+            <img id="half-tab-image" src="./images/tablet-half.png" alt="Tablet Half Image">
+
+            <img id="iphone-image" src="./images/iphone.png" alt="Iphone Image">
+
+        </div>
+    </section>
+
+    <!-- Service Detail Section -->
+    <section class="service-detail-section">
+        <div class="container">
+            <h2 class="section-heading">
+                <span class="section-subheading">Service</span><br>
+                WHAT WE DO
+            </h2>
+            <div class="description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+            </div>
+            <div class="service-detail clearfix">
+                <div class="service-image-container">
+                    <img src="./images/accordion-image.png" alt="Accordian Image">
+                </div>
+                <div class="service-accordion-container">
+                    <div class="accordion-item active">
+                        <div class="accordion-heading">
+                            <div class="heading-text">
+                                <span class="mdi mdi-image accordion-icon"></span>PHOTOGRAPHY
+                            </div>
+                            <span class="mdi mdi-chevron-up accordion-arrow"></span>
+                        </div>
+                        <div class="accordion-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Deleniti quis eos dolorem modi ipsam ea illo unde architecto repudiandae minus odio quod,
+                            eligendi exercitationem esse, cumque aspernatur! Fuga, voluptatem recusandae!</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-heading">
+                            <div class="heading-text">
+                                <span class="mdi mdi-creation accordion-icon"></span>CREATIVITY
+                            </div>
+                            <span class="mdi mdi-chevron-down accordion-arrow"></span>
+                        </div>
+                        <div class="accordion-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Deleniti quis eos dolorem modi ipsam ea illo unde architecto repudiandae minus odio quod,
+                            eligendi exercitationem esse, cumque aspernatur! Fuga, voluptatem recusandae!</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-heading">
+                            <div class="heading-text">
+                                <span class="mdi mdi-code-not-equal-variant accordion-icon"></span>WEB DESIGN
+                            </div>
+                            <span class="mdi mdi-chevron-down accordion-arrow"></span>
+                        </div>
+                        <div class="accordion-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Deleniti quis eos dolorem modi ipsam ea illo unde architecto repudiandae minus odio quod,
+                            eligendi exercitationem esse, cumque aspernatur! Fuga, voluptatem recusandae!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Feedback Section -->
+    <section class="user-feedback-section">
+        <div class="container user-feedback-container clearfix">
+            <a class="left-arrow" href="#"><span class="mdi mdi-chevron-left"></span></a>
+            <div class="feedback-text-container">
+                <span class="mdi mdi-comment-multiple-outline feedback-icon"></span>
+                <span class="feedback-text">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”
+                </span>
+                <span class="user-name">Jon Doe</span>
+            </div>
+            <a href="#"><span class="mdi mdi-chevron-right right-arrow"></span></a>
+        </div>
+    </section>
 </body>
 
 </html>

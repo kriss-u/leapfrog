@@ -962,3 +962,75 @@ figure.team-overlay-image {
     padding-bottom: 120px;
 }
 
+.blog {
+    float: left;
+    width: 380px;
+    margin-right: 20px;
+}
+.blog:last-child {
+    margin-right: 0px;
+}
+.blog-image {
+    position: relative;
+    margin-bottom: 15px;
+}
+.blog-date{
+    position: absolute;
+    bottom: 10px;
+    left: -10px;
+    display: inline-block;
+    padding: 15px;
+    background: #95e1d3;
+    color: white;
+    line-height: 1.2;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+.blog-day {
+    font-size: 30px;
+    font-weight: bold;
+}
+.blog-month {
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
+}
+.blog-title {
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    color: #333333;
+    line-height: 1.2;
+    text-align: left;
+    margin-bottom: 12px;
+}
+.blog-text {
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    color: #999999;
+    line-height: 1.6;
+    text-align: left;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 15px;
+}
+
+.blog-stat {
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    color: #999999;
+    font-style: italic;
+    line-height: 1.6;
+    text-align: left;
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.blog-icons {
+    color: #95e1d3;
+    margin-right: 5px;
+}
+
+.blog a {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1218,6 +1218,13 @@ input[type=submit]:hover {
 /* For media less than 1920 pixels and greater than 1200 pixels*/
 
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {
+    
+    .slider-section {
+        padding-top: 50px;
+    }
+    .carousel-navigation-container {
+        margin-top: -120px;
+    }
     .image-gallery {
         width: 1200px;
         margin: auto;
@@ -1538,14 +1545,9 @@ input[type=submit]:hover {
        width: 100%;
        height: 100%;
     }
-    .quote-text {
-        position: relative;
-        display: inline-block;
-        width: 531.25px;
-        padding-left: 30px;
-    }
 
     .quote-text {
+        position: relative;
         width: 662.5px;
         padding-left: 0px;
         padding-right: 60px;
@@ -1632,8 +1634,6 @@ input[type=submit]:hover {
         padding: 25px 0px;
     }
     .footer-left {
-        /* float: left; */
-        /* width: 500px; */
         width: 100%;
         padding-right: 18px;
     }
@@ -1782,7 +1782,6 @@ input[type=submit]:hover {
     .story-image img {
         width: 100%;
         height: 100%;
-        
     }
     .image-content:last-child {
         margin-right: auto;
@@ -1907,7 +1906,7 @@ input[type=submit]:hover {
     }
     .feedback-text-container { 
         max-width: 100%;
-        margin: 0px 25px;
+        margin: auto;
         display: inline-block;
         text-align: center;
     }
@@ -1934,101 +1933,103 @@ input[type=submit]:hover {
     }
 
     .team-section {
-        padding: 50px 0px;
-        margin-bottom: 40px;
+        padding: 20px 0px;
+        margin-bottom: 16px;
     }
-    .team-image-container {
+    .team-images-container {
+        display:block;
         margin: auto;
     }
     .team-image-content {
-        width: 237.5px;
-        height: 293.75px;
-        margin-right: 18px;
+        float: none;
+        margin: auto;
+        width: auto;
+        height: auto;
+        margin-bottom: 20px;
+        max-width: 380px;
     }
-    .team-image-content img {
-        width: 237.5px;
-        height: 293.75px;
+    .team-image {
+        max-width: 380px;
+    }
+    .team-image img {
+        width: 100%;
+        height: 100%;
+    }
+    .team-image-content:last-child {
+        margin-right: auto;
     }
     .team-image-overlay {
-        width: 237.5px;
-        height: 293.75px;
+        max-width: 100%;
+        height: auto;
         top: -6.25px;
         left: -6.25px;
     }
+    .team-overlay-image {
+        max-width: 380px;
+    }
+    .team-overlay-image img {
+        width: 100%;
+    }
     .team-image-content:hover .team-overlay-content {
         left: 20%;
-        font-size: 18px;
+        font-size: 2em;
     }
     
     .team-image-content:hover .team-overlay-content a {
         padding: 6.25px 8.125px;
     }
 
-    .logo-section {
-        padding: 30px 0px;
-    }
-    .logo-image {
-        margin-right: 30px;
-    }
-    .some-work-section {
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
-    .image-gallery {
-        width: 750px;
-    }
-    .image-gallery-half {
-        width: 375px;
-    }
-    .gallery-image img{
-        width: 187.5px;
-    }
-    .gallery-image-text-container {
-        width: 100%;
-        height: 152.34375px;
-    }
-    .gallery-image.gallery-image-full .gallery-image-text-container {
-        height: 304.6875px;
-    }
-    .image-gallery-half>ul>li>a {
-        width: 187.5px;
-    }
-    .gallery-image-overlay-icon {
-        margin-bottom: 8px;
-    }
-    .gallery-image-overlay-title {
-        margin-bottom: 10px;
+    .team-member-caption {
+        margin: auto;
+        padding-top: 24px;
+        background: white;
     }
 
+    .logo-section {
+        padding: 12px 0px;
+    }
+    .logo-image {
+        float: none;
+        margin-right: 12px;
+        margin:auto;
+        max-width: 150px;
+    }
+    .logo-image:last-child {
+        display: none;
+    }
+
+    .logo-image img {
+        width: 100%;
+    }
+    
+    .some-work-section {
+        display: none;
+    }
+
+    .quote-section {
+        margin-top: 30px;
+    }
     .quote-text-container {
-        width: 662.5px;
-        margin: 0px 62.5px;
+        max-width: 100%;
+        margin: auto;
         display: inline-block;
+        text-align: center;
     }
     .quote-image {
-        display: block;
-        width: 131.25px;
-        height: 131.25px;
-        margin-right: 265.625px;
-        margin-left: 265.625px;
+        display: inline-block;
+        max-width: 210px;
+        height: auto;
+        margin: auto;
     }
     .quote-image img {
         float: left;
         display: block;
-       width: 100%;
-       height: 100%;
+        width: 100%;
     }
     .quote-text {
-        position: relative;
-        display: inline-block;
-        width: 531.25px;
-        padding-left: 30px;
-    }
-
-    .quote-text {
-        width: 662.5px;
+        max-width: 100%;
         padding-left: 0px;
-        padding-right: 60px;
+        padding-right: 24px;
         display: block;
         text-align: left;
     }
@@ -2043,18 +2044,19 @@ input[type=submit]:hover {
         bottom: -32px;
     }
 
-
     .happy-client-section {
-        padding-top: 50px;
-        margin-top: 80px;
-        padding-bottom: 50px;
+        padding-top: 20px;
+        margin-top: 20%;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .client-wrapper {
-        width: 375px;
+        max-width: 100%;
         margin-bottom: 30px;
     }
     .client-content {
-        width: 287.5px;
+        width: 100%;
     }
     .client-profile {
         width: 68px;
@@ -2068,22 +2070,31 @@ input[type=submit]:hover {
     }
     .client-text {
         margin-top: 9px;
-        padding-right: 30px;
+        padding-right: 20px;
     }
 
     .latest-blog {
-        padding: 50px 0px;
+        padding: 20px 0px;
     }
 
     .blog {
-        width: 237.5px;
-        margin-right: 12.5px;
+        float: none;
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .blog:last-child {
+        margin-right: auto;
+    }
+    .blog-container {
+        width: auto;
     }
     .blog-image {
         margin-bottom: 9px;
-        width: 237.5px;
+        max-width: 380px;
     }
     .blog-image img {
+        display: block;
         width: 100%;
     }
     .blog-date{
@@ -2111,36 +2122,50 @@ input[type=submit]:hover {
     .map-section {
         padding: 25px 0px;
     }
+    .footer-main {
+        padding: 30px 10px;
+    }
     .footer-left {
-        /* float: left; */
-        /* width: 500px; */
         width: 100%;
-        padding-right: 18px;
     }
     .company-logo {
-        margin-bottom: 25px;
+        margin-bottom: 10px;
     }
     .company-text {
-        margin-bottom: 30px;
+        margin-bottom: 12px;
+    }
+    .footer-blog-container {
+        width: auto;
+        padding-bottom: 30px;
+    }
+    .footer-heading {
+        margin-bottom: 16px;
+    }
+    .instagram-photo-gallery {
+        width: auto;
+        max-width: 100%;
     }
     .followers-summary {
-        padding-bottom: 11px;
+        padding-bottom: 5px;
     }
     .social-media-container {
-        padding: 11px 0px;
+        padding: 5px 0px;
     }
     .label {
-        padding-right: 11px;
+        padding-right: 5px;
     }
     .social-media-container a {
-        margin-right: 8px;
+        margin-right: 3px;
     }
     .subscription-form {
-        padding-top: 11px;
+        padding-top: 5px;
+    }
+    .input-group {
+        max-width: 100%;
     }
     input[type=email] {
         padding: 8px;
-        width: 230px;
+        max-width: 100%;
     }
     input[type=submit] {
         padding: 12px;
@@ -2148,9 +2173,9 @@ input[type=submit]:hover {
     
     .footer-right {
         float: none;
-        padding-bottom: 20px;
+        padding-bottom: 8px;
     }
     .footer-copyright {
-        padding: 15px 0px;
+        padding: 6px 0px;
     }
 }

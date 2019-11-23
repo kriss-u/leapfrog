@@ -107,10 +107,8 @@ ul.header-menu>li>a:hover {
     content: "";
     height: 3px;
     background: white;
-    /* width: 80px; */
     width: 60px;
     position: absolute;
-    /* left: 45.0000%; */
     left: 47.50%;
     bottom: 0px;
 }
@@ -1441,6 +1439,486 @@ input[type=submit]:hover {
         width: 662.5px;
         padding-left: 0px;
         padding-right: 60px;
+        display: block;
+        text-align: left;
+    }
+    .feedback-text:after {
+        width: 30px;
+        height: 3px;
+        left: 0px;
+        bottom: -20px;
+    }
+    .user-name {
+        left: 60px;
+        bottom: -32px;
+    }
+
+    .team-section {
+        padding: 50px 0px;
+        margin-bottom: 40px;
+    }
+    .team-image-container {
+        margin: auto;
+    }
+    .team-image-content {
+        width: 237.5px;
+        height: 293.75px;
+        margin-right: 18px;
+    }
+    .team-image-content img {
+        width: 237.5px;
+        height: 293.75px;
+    }
+    .team-image-overlay {
+        width: 237.5px;
+        height: 293.75px;
+        top: -6.25px;
+        left: -6.25px;
+    }
+    .team-image-content:hover .team-overlay-content {
+        left: 20%;
+        font-size: 18px;
+    }
+    
+    .team-image-content:hover .team-overlay-content a {
+        padding: 6.25px 8.125px;
+    }
+
+    .logo-section {
+        padding: 30px 0px;
+    }
+    .logo-image {
+        margin-right: 30px;
+    }
+    .some-work-section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .image-gallery {
+        width: 750px;
+    }
+    .image-gallery-half {
+        width: 375px;
+    }
+    .gallery-image img{
+        width: 187.5px;
+    }
+    .gallery-image-text-container {
+        width: 100%;
+        height: 152.34375px;
+    }
+    .gallery-image.gallery-image-full .gallery-image-text-container {
+        height: 304.6875px;
+    }
+    .image-gallery-half>ul>li>a {
+        width: 187.5px;
+    }
+    .gallery-image-overlay-icon {
+        margin-bottom: 8px;
+    }
+    .gallery-image-overlay-title {
+        margin-bottom: 10px;
+    }
+
+    .quote-text-container {
+        width: 662.5px;
+        margin: 0px 62.5px;
+        display: inline-block;
+    }
+    .quote-image {
+        display: block;
+        width: 131.25px;
+        height: 131.25px;
+        margin-right: 265.625px;
+        margin-left: 265.625px;
+    }
+    .quote-image img {
+        float: left;
+        display: block;
+       width: 100%;
+       height: 100%;
+    }
+    .quote-text {
+        position: relative;
+        display: inline-block;
+        width: 531.25px;
+        padding-left: 30px;
+    }
+
+    .quote-text {
+        width: 662.5px;
+        padding-left: 0px;
+        padding-right: 60px;
+        display: block;
+        text-align: left;
+    }
+    .quote-text:after {
+        width: 30px;
+        height: 3px;
+        left: 0px;
+        bottom: -20px;
+    }
+    .quote-user-name {
+        left: 60px;
+        bottom: -32px;
+    }
+
+
+    .happy-client-section {
+        padding-top: 50px;
+        margin-top: 80px;
+        padding-bottom: 50px;
+    }
+    .client-wrapper {
+        width: 375px;
+        margin-bottom: 30px;
+    }
+    .client-content {
+        width: 287.5px;
+    }
+    .client-profile {
+        width: 68px;
+    }
+    .client-profile img{
+        width: 100%;
+    }
+    .client-info {
+        margin-top: 15px;
+        padding-bottom: 9px;
+    }
+    .client-text {
+        margin-top: 9px;
+        padding-right: 30px;
+    }
+
+    .latest-blog {
+        padding: 50px 0px;
+    }
+
+    .blog {
+        width: 237.5px;
+        margin-right: 12.5px;
+    }
+    .blog-image {
+        margin-bottom: 9px;
+        width: 237.5px;
+    }
+    .blog-image img {
+        width: 100%;
+    }
+    .blog-date{
+        bottom: 6.25px;
+        left: -6.25px;
+        padding: 9px;
+    }
+    .blog-day {
+        font-size: 20px;
+    }
+    .blog-month {
+        font-size: 12px;
+    }
+    .blog-title {
+        margin-bottom: 7px;
+    }
+    .blog-text {
+        padding-bottom: 12px;
+        margin-bottom: 9px;
+    }
+    .blog-stat {
+     margin-right: 10px;
+    }
+
+    .map-section {
+        padding: 25px 0px;
+    }
+    .footer-left {
+        /* float: left; */
+        /* width: 500px; */
+        width: 100%;
+        padding-right: 18px;
+    }
+    .company-logo {
+        margin-bottom: 25px;
+    }
+    .company-text {
+        margin-bottom: 30px;
+    }
+    .followers-summary {
+        padding-bottom: 11px;
+    }
+    .social-media-container {
+        padding: 11px 0px;
+    }
+    .label {
+        padding-right: 11px;
+    }
+    .social-media-container a {
+        margin-right: 8px;
+    }
+    .subscription-form {
+        padding-top: 11px;
+    }
+    input[type=email] {
+        padding: 8px;
+        width: 230px;
+    }
+    input[type=submit] {
+        padding: 12px;
+    }
+    
+    .footer-right {
+        float: none;
+        padding-bottom: 20px;
+    }
+    .footer-copyright {
+        padding: 15px 0px;
+    }
+}
+
+@media only screen and (max-width: 749px) {
+    .header-section {
+        width: 100%;
+    }
+    .navbar {
+        width: 100%;
+    }
+    .navbar-logo {
+        float: none;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .header-menu-wrapper {
+        float: none;
+        text-align: center;
+    }
+    ul.header-menu {
+        text-align: center;
+        padding: 0px 10px;
+    }
+    ul.header-menu>li {
+        float: none;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    ul.header-menu>li>a {
+        margin-right: 12px;
+        padding-bottom: 3px;
+    }
+
+    .slider-section {
+        padding-top: 20px;
+        padding-bottom: 12px;
+        width: 100%;
+    }
+
+    .carousel-item-content {
+        font-size: 36px;
+        line-height: 30px;
+        padding-bottom: 16px;
+    }
+
+    .carousel-item-content:after {
+        width: 37px;   
+    }
+    .carousel-item-subheading {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .carousel-item-button {
+        margin-top: 16px;
+    }
+    .carousel-item-button a {
+        padding: 6px 12px;
+    }
+    .carousel-navigation-container {
+        width: 100%;
+    }
+    ul.carousel-navigation {
+        margin-top: 24px;
+    }    
+    ul.carousel-navigation li a {
+        padding-top: 4px;
+        margin-right: 10px;
+    }
+    ul.carousel-navigation li a .number {
+        display: none;
+    }
+
+    .story-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .container {
+        width: 100%;
+    }
+    h2.section-heading {
+        padding-bottom: 6px;
+        margin-bottom: 10px;
+    }
+    h2.section-heading .section-subheading {
+        margin-bottom: 3px;
+    }
+    h2.section-heading:after {
+        width: 37px;
+    }
+    .description {
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+    .story-images-container {
+        display: block;
+    }
+    .image-content {
+        float: none;
+        margin: auto;
+        margin-bottom: 20px;
+        width: auto;
+        height: auto;
+        max-width: 380px;
+    }
+    .story-image {
+        max-width: 380px;
+    }
+    .story-image img {
+        width: 100%;
+        height: 100%;
+        
+    }
+    .image-content:last-child {
+        margin-right: auto;
+    }
+    .image-overlay {
+        max-width: 100%;
+        height: auto;
+    }
+    .overlay-image {
+        max-width: 380px;
+    }
+    .overlay-image img {
+        width: 100%;
+    }
+    .image-content:hover figure.story-image {
+        display: block;
+        visibility: hidden;
+    }
+    .counter { 
+        float: none;
+        width: 100%;
+        padding: 5px 0px;
+        border: none;
+        border-bottom: 1px solid #b5eae0;
+        
+    }
+    .counter:last-child {
+        border: none;
+    }
+    .counter-number {
+        margin-bottom: 7px;
+    }
+
+    .services-section {
+        padding: 20px 0px;
+    }
+    .heading-container {
+        padding-bottom: 10px;
+    }
+   .services-container {
+       margin-top: 24px;
+   }
+   .services-section hr {
+       display: none;
+   }
+
+   .service {
+       margin-bottom: 20px;
+       border-bottom: 1px solid #e5e5e5;
+       width: 100%;
+       float: none;
+   }
+   .service-heading {
+       margin-bottom: 12px;
+   }
+   .service-content {
+       float: left;
+       width: auto;
+   }
+    .unique-design-section {
+        padding-top: 50px;
+    }
+    .unique-design-container img#half-tab-image {
+        width: 40%;
+    }
+    .unique-design-container img#iphone-image {
+        left: 50%;
+        bottom: -10%;
+        width: 20%;
+    }
+
+    .service-detail-section {
+        padding: 25px;
+    }
+
+    .service-image-container {
+        float: none;
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .service-image-container img {
+        width: 100%;
+        margin: auto;
+        display: block;
+    }
+    .service-accordion-container {
+        width: auto;
+        float: none;
+    }
+    .accordion-icon {
+        margin-right: 9.375px;
+    }
+    .accordion-item {
+        width: 100%;
+        margin-bottom: 6.25px;
+    }
+    .heading-text {
+        margin-left: 9.375px;
+    }
+    .accordion-arrow {
+        margin-right: 12.5px;
+    }
+    .accordion-description {
+        padding-left: 12.5px;
+        padding-right: 31.25px;
+        padding-top: 12.5px;
+        padding-bottom: 15.625px;
+    }
+
+    .user-feedback-container {
+        padding:16px 3px;
+        padding-bottom: 30px;
+    }
+    .left-arrow {
+        top: 20%;
+        left: 0px;
+    }
+    .right-arrow {
+        top: 20%;
+        right: 0px;
+    }
+    .feedback-text-container { 
+        max-width: 100%;
+        margin: 0px 25px;
+        display: inline-block;
+        text-align: center;
+    }
+    .feedback-icon {
+        padding: 6px 10px;
+        display: inline-block;  
+    }
+    .feedback-text {
+        max-width: 100%;
+        padding-left: 0px;
+        padding-right: 24px;
         display: block;
         text-align: left;
     }

@@ -1256,9 +1256,12 @@ input[type=submit]:hover {
     
 }
 
-/* For media greater than 600px */
+/* For media greater than 700px */
 
 @media only screen and (min-width: 750px) and (max-width: 1199px) {
+    * {
+        overflow: hidden;
+    }
     .header-section {
         width: 100%;
     }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Image Carousel</title>
+  </head>
+
+  <body>
+    <div id="main">
+
+      <div class="carousel-container">
+
+        <div class="carousel-image-wrapper">
+
+          <div class="carousel-image-item active">
+            <img src="./images/abstract-q-c-1366-600-3.jpg" alt="Image 1">
+          </div>
+
+          <div class="carousel-image-item">
+            <img src="./images/city-q-c-1366-600-2.jpg" alt="Image 2">
+          </div>
+
+          <div class="carousel-image-item">
+            <img src="./images/nightlife-q-c-1366-600-4.jpg" alt="Image 3">
+          </div>
+
+        </div>
+
+        <a class="previous">&#10094;</a>
+        <a class="next">&#10095;</a>
+
+        <div class="carousel-navigation">
+          <span class="navigation-dot" onclick="goToSlide(0)"></span>
+          <span class="navigation-dot" onclick="goToSlide(1)"></span>
+          <span class="navigation-dot" onclick="goToSlide(2)"></span>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+
+  </body>
+
+</html>

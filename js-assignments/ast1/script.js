@@ -14,23 +14,32 @@ carouselImageWrapper.style.width = numberOfImages * IMAGE_WIDTH + 'px';
 var carouselImageWrapperWidth = carouselImageWrapper.style.width;
 var carouselImageWrapperMarginLeft = carouselImageWrapper.style.marginLeft;
 
-var automaticSlide = setInterval(goToNextImage, 2000);
+var automaticSlideInstance;
+var automaticSlide = function () {
+  automaticSlideInstance = setInterval(goToNextImage, 2000);
+};
+automaticSlide();
+
 
 function goToNextImage() {
-  clearInterval(automaticSlide);
+  clearInterval(automaticSlideInstance);
   currentIndex = (currentIndex + 1) % numberOfImages;
   carouselImageWrapper.style.marginLeft = currentIndex === 0 ? '0px' : -(currentIndex * IMAGE_WIDTH) + 'px';
-
+  setTimeout(automaticSlide, 1);
 }
 
 function goToPreviousImage() {
+  clearInterval(automaticSlideInstance);
   carouselImageWrapper.style.marginLeft = currentIndex === 0 ? -((numberOfImages - 1) * IMAGE_WIDTH) + 'px' : -((currentIndex - 1) * IMAGE_WIDTH) + 'px';
   currentIndex = Math.sign(currentIndex) === 0 ? numberOfImages - 1 : currentIndex - 1;
+  setTimeout(automaticSlide, 1);
 }
 
 function goToSlide(index) {
+  clearInterval(automaticSlide);
   currentIndex = index;
   carouselImageWrapper.style.marginLeft = currentIndex === 0 ? '0px' : -(currentIndex * IMAGE_WIDTH) + 'px';
+  setTimeout(automaticSlide, 1);
 }
 
 nextArrow.addEventListener('click', goToNextImage);

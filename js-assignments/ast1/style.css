@@ -3,6 +3,8 @@
 }
 * {
   overflow: hidden;
+  margin: 0px;
+  padding: 0px;
 }
 img {
   display: block;
@@ -11,6 +13,7 @@ img {
 
 .carousel-container {
   position: relative;
+  width: 1200px;
 }
 .carousel-image-wrapper {
   overflow: hidden;
@@ -19,7 +22,7 @@ img {
 }
 
 .carousel-image-item {
-  width: 1366px;
+  width: 1200px;
   float: left;
   display: block;
 }
@@ -63,11 +66,13 @@ img {
   border: 2px solid white;
   display: inline-block;
 }
-.navigation-dot:hover {
-  background-color: transparent;
-  border-radius: 50%;
+.navigation-dot.active {
   border: 3px solid white;
   background-color: white;
+}
+.navigation-dot:hover {
+  border: 3px solid white;
+  background-color: gray;
 }
 .carousel-image-wrapper:before,
 .carousel-image-wrapper:after {

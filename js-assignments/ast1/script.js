@@ -27,9 +27,9 @@ for (var i = 0; i < numberOfImages; ++i) {
 // var carouselImageWrapperMarginLeft = carouselImageWrapper.style.marginLeft;
 
 function automaticSlide() {
-  automaticSlideInstance = setInterval(goToNextImage, 3000);
+  automaticSlideInstance = setInterval(goToNextImage, 2000);
 };
-// automaticSlide();
+automaticSlide();
 
 
 function changeNavigationDot(oldDot, newDot) {
@@ -38,77 +38,6 @@ function changeNavigationDot(oldDot, newDot) {
 }
 
 changeNavigationDot(carouselNavigationContainer[2], carouselNavigationContainer[currentIndex]);
-
-
-// function animateNext(oldIndex, currentIndex) {
-//   var oldLeft = -(oldIndex * IMAGE_WIDTH);
-//   var newLeft = -(currentIndex * IMAGE_WIDTH);
-
-//   var animateInterval = setInterval(animate, 1);
-
-//   var offsetLeft;
-//   if (newLeft === 0) {
-//     var animateDifference = 50;
-//     oldLeft++;
-//   }
-//   else {
-//     var animateDifference = -20;
-//     oldLeft--;
-//   }
-
-
-//   function animate() {
-//     if (currentIndex === 0) {
-//       offsetLeft = oldLeft % ((numberOfImages - 1) * IMAGE_WIDTH);
-//     } else {
-//       offsetLeft = (oldLeft - newLeft) % IMAGE_WIDTH;
-//     }
-//     if (Math.abs(offsetLeft) <= Math.abs(animateDifference)) {
-//       clearInterval(animateInterval);
-//       carouselImageWrapper.style.left = oldLeft - offsetLeft + 'px';
-//     } else {
-//       oldLeft = oldLeft + animateDifference;
-//       carouselImageWrapper.style.left = oldLeft + 'px';
-//     }
-//   }
-// }
-
-// function animatePrevious(oldIndex, currentIndex) {
-//   var oldLeft = -(oldIndex * IMAGE_WIDTH);
-//   var newLeft = -(currentIndex * IMAGE_WIDTH);
-
-//   var animateInterval = setInterval(animate, 1);
-
-//   var offsetLeft;
-
-//   if (currentIndex === (numberOfImages - 1)) {
-//     var animateDifference = -50;
-//     oldLeft--;
-//   }
-//   else {
-//     var animateDifference = 20;
-//     oldLeft++;
-//   }
-
-//   function animate() {
-//     if (oldIndex === 0) {
-//       offsetLeft = (newLeft - oldLeft) % ((numberOfImages - 1) * IMAGE_WIDTH);
-//     } else {
-//       offsetLeft = (oldLeft - newLeft) % IMAGE_WIDTH;
-//     }
-//     if (Math.abs(offsetLeft) <= Math.abs(animateDifference)) {
-//       clearInterval(animateInterval);
-//       if (oldIndex === 0) {
-//         carouselImageWrapper.style.left = oldLeft + (offsetLeft) + 'px';
-//       } else {
-//         carouselImageWrapper.style.left = oldLeft + Math.abs(offsetLeft) + 'px';
-//       }
-//     } else {
-//       oldLeft = oldLeft + animateDifference;
-//       carouselImageWrapper.style.left = oldLeft + 'px';
-//     }
-//   }
-// }
 
 // This function will animate Slide
 function animateSlide(oldIndex, currentIndex) {
@@ -128,7 +57,6 @@ function animateSlide(oldIndex, currentIndex) {
     }
 
     animateDifference = animateDifference * Math.abs(currentIndex - oldIndex);
-
 
     function animate() {
       if (currentIndex < oldIndex) {
@@ -163,16 +91,13 @@ function goToNextImage() {
 
   changeNavigationDot(oldDot, currentDot);
 
-  // animateNext(oldIndex, currentIndex);
   animateSlide(oldIndex, currentIndex);
+
+  // setTimeout(automaticSlideInstance)
 
 }
 
 function goToPreviousImage() {
-  // clearInterval(automaticSlideInstance);
-
-  // carouselImageWrapper.style.marginLeft = currentIndex === 0 ? -((numberOfImages - 1) * IMAGE_WIDTH) + 'px' : -((currentIndex - 1) * IMAGE_WIDTH) + 'px';
-
   var oldIndex = currentIndex;
   var oldDot = carouselNavigationContainer[oldIndex];
 
@@ -180,14 +105,11 @@ function goToPreviousImage() {
   var currentDot = carouselNavigationContainer[currentIndex];
 
   changeNavigationDot(oldDot, currentDot);
-  // animatePrevious(oldIndex, currentIndex);
   animateSlide(oldIndex, currentIndex);
 
-  // setTimeout(automaticSlide, 1);
 }
 
 function goToSlide(e) {
-  // clearInterval(automaticSlideInstance);
 
   var oldIndex = currentIndex;
   var oldDot = carouselNavigationContainer[oldIndex];
@@ -202,7 +124,6 @@ function goToSlide(e) {
 
   animateSlide(oldIndex, currentIndex);
 
-  // setTimeout(automaticSlide, 1);
 }
 
 nextArrow.addEventListener('click', goToNextImage);

@@ -39,9 +39,119 @@ function changeNavigationDot(oldDot, newDot) {
 
 changeNavigationDot(carouselNavigationContainer[2], carouselNavigationContainer[currentIndex]);
 
+
+function animateNext(oldIndex, currentIndex) {
+  var oldLeft = -(oldIndex * IMAGE_WIDTH);
+  var newLeft = -(currentIndex * IMAGE_WIDTH);
+
+  var animateInterval = setInterval(animate, 1);
+
+  var offsetLeft;
+  if (newLeft === 0) {
+    var animateDifference = 50;
+    oldLeft++;
+  }
+  else {
+    var animateDifference = -20;
+    oldLeft--;
+  }
+
+
+  function animate() {
+    if (currentIndex === 0) {
+      offsetLeft = oldLeft % ((numberOfImages - 1) * IMAGE_WIDTH);
+    } else {
+      offsetLeft = (oldLeft - newLeft) % IMAGE_WIDTH;
+    }
+    if (Math.abs(offsetLeft) <= Math.abs(animateDifference)) {
+      clearInterval(animateInterval);
+      carouselImageWrapper.style.left = oldLeft - offsetLeft + 'px';
+    } else {
+      oldLeft = oldLeft + animateDifference;
+      carouselImageWrapper.style.left = oldLeft + 'px';
+    }
+  }
+}
+
+function animatePrevious(oldIndex, currentIndex) {
+  var oldLeft = -(oldIndex * IMAGE_WIDTH);
+  var newLeft = -(currentIndex * IMAGE_WIDTH);
+
+  var animateInterval = setInterval(animate, 1);
+
+  var offsetLeft;
+
+  if (currentIndex === (numberOfImages - 1)) {
+    var animateDifference = -50;
+    oldLeft--;
+  }
+  else {
+    var animateDifference = 20;
+    oldLeft++;
+  }
+
+  function animate() {
+    if (oldIndex === 0) {
+      offsetLeft = (newLeft - oldLeft) % ((numberOfImages - 1) * IMAGE_WIDTH);
+    } else {
+      offsetLeft = (oldLeft - newLeft) % IMAGE_WIDTH;
+    }
+    if (Math.abs(offsetLeft) <= Math.abs(animateDifference)) {
+      clearInterval(animateInterval);
+      if (oldIndex === 0) {
+        carouselImageWrapper.style.left = oldLeft + (offsetLeft) + 'px';
+      } else {
+        carouselImageWrapper.style.left = oldLeft + Math.abs(offsetLeft) + 'px';
+      }
+    } else {
+      oldLeft = oldLeft + animateDifference;
+      carouselImageWrapper.style.left = oldLeft + 'px';
+    }
+  }
+}
+
+function animateSlide(oldIndex, currentIndex) {
+  var oldLeft = -(oldIndex * IMAGE_WIDTH);
+  var newLeft = -(currentIndex * IMAGE_WIDTH);
+
+  var animateInterval = setInterval(animate, 1);
+
+  var offsetLeft;
+  if (currentIndex > oldIndex) {
+    var animateDifference = -20;
+    oldLeft--;
+  } else {
+    var animateDifference = 20;
+    oldLeft++;
+  }
+
+  animateDifference = animateDifference * Math.abs(currentIndex - oldIndex);
+
+
+  function animate() {
+    if (currentIndex < oldIndex) {
+      offsetLeft = (newLeft - oldLeft) % (Math.abs(currentIndex - oldIndex) * IMAGE_WIDTH);
+    } else {
+      offsetLeft = (oldLeft - newLeft) % (Math.abs(currentIndex - oldIndex) * IMAGE_WIDTH);
+    }
+    if (Math.abs(offsetLeft) <= Math.abs(animateDifference)) {
+      clearInterval(animateInterval);
+      if (currentIndex > oldIndex) {
+        carouselImageWrapper.style.left = oldLeft - offsetLeft + 'px';
+      }
+      else {
+        carouselImageWrapper.style.left = oldLeft + offsetLeft + 'px';
+      }
+    } else {
+      oldLeft = oldLeft + animateDifference;
+      carouselImageWrapper.style.left = oldLeft + 'px';
+    }
+  }
+}
+
+
 function goToNextImage() {
   // clearInterval(automaticSlideInstance);
-
   var oldIndex = currentIndex;
   var oldDot = carouselNavigationContainer[oldIndex];
 
@@ -50,45 +160,8 @@ function goToNextImage() {
 
   changeNavigationDot(oldDot, currentDot);
 
-  var oldMarginLeft = -(oldIndex * IMAGE_WIDTH);
-  var newMarginLeft = -(currentIndex * IMAGE_WIDTH);
+  animateNext(oldIndex, currentIndex);
 
-  var animateInterval = setInterval(animate, 1)
-
-  var animateDifference = -1;
-
-  function animate() {
-    if (newMarginLeft === 0 && oldMarginLeft <= newMarginLeft) {
-
-      var df = -animateDifference * numberOfImages;
-      var marginOffset = carouselImageWrapper.offsetLeft;
-      for (i = 0; i < 10; i++) {
-        if (oldMarginLeft > newMarginLeft)
-          break;
-        carouselImageWrapper.style.marginLeft = (oldMarginLeft + df) + 'px';
-        oldMarginLeft = oldMarginLeft + df;
-      }
-
-    } else if (oldMarginLeft < newMarginLeft) {
-
-      clearInterval(animateInterval);
-
-    } else if (newMarginLeft !== 0) {
-
-      var df = animateDifference;
-
-      for (i = 0; i < 10; i++) {
-        if (oldMarginLeft <= newMarginLeft)
-          break;
-        carouselImageWrapper.style.marginLeft = (oldMarginLeft + df) + 'px';
-        oldMarginLeft = oldMarginLeft + df;
-      }
-    }
-  }
-  // setTimeout(function () {
-  //   // clearInterval(animateInterval);
-  //   automaticSlide();
-  // }, 0);
 }
 
 function goToPreviousImage() {
@@ -102,45 +175,14 @@ function goToPreviousImage() {
   currentIndex = currentIndex === 0 ? numberOfImages - 1 : currentIndex - 1;
   var currentDot = carouselNavigationContainer[currentIndex];
 
-  carouselImageWrapper.style.marginLeft = -currentIndex * IMAGE_WIDTH + 'px';
-
   changeNavigationDot(oldDot, currentDot);
-
-  var oldMarginLeft = -(oldIndex * IMAGE_WIDTH);
-  var newMarginLeft = -(currentIndex * IMAGE_WIDTH);
-
-  var animateInterval = setInterval(animate, 1)
-
-  function animate() {
-    if (newMarginLeft === 0 && oldMarginLeft <= newMarginLeft) {
-
-      var df = -animateDifference * numberOfImages;
-
-      for (i = 0; i < 10; i++) {
-        carouselImageWrapper.style.marginLeft = (oldMarginLeft + df - 22) + 'px';
-        oldMarginLeft = oldMarginLeft + df;
-      }
-
-    } else if (oldMarginLeft < newMarginLeft) {
-
-      clearInterval(animateInterval);
-
-    } else if (newMarginLeft !== 0) {
-
-      var df = animateDifference;
-
-      for (i = 0; i < 10; i++) {
-        carouselImageWrapper.style.marginLeft = (oldMarginLeft + df + 4) + 'px';
-        oldMarginLeft = oldMarginLeft + df;
-      }
-    }
-  }
+  animatePrevious(oldIndex, currentIndex);
 
   // setTimeout(automaticSlide, 1);
 }
 
 function goToSlide(e) {
-  clearInterval(automaticSlideInstance);
+  // clearInterval(automaticSlideInstance);
 
   var oldIndex = currentIndex;
   var oldDot = carouselNavigationContainer[oldIndex];
@@ -150,14 +192,15 @@ function goToSlide(e) {
 
   changeNavigationDot(oldDot, currentDot);
 
-  carouselImageWrapper.style.marginLeft = currentIndex === 0 ? '0px' : -(currentIndex * IMAGE_WIDTH) + 'px';
+  var oldLeft = -(oldIndex * IMAGE_WIDTH);
+  var newLeft = -(currentIndex * IMAGE_WIDTH);
 
-  setTimeout(automaticSlide, 1);
+  if (oldIndex !== currentIndex) {
+    animateSlide(oldIndex, currentIndex);
+  }
+  // setTimeout(automaticSlide, 1);
 }
 
-function animate() {
-
-}
 nextArrow.addEventListener('click', goToNextImage);
 previousArrow.addEventListener('click', goToPreviousImage);
 

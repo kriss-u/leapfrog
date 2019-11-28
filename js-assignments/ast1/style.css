@@ -13,16 +13,20 @@ img {
 
 .carousel-container {
   position: relative;
-  width: 1200px;
+  width: 1366px;
+  min-height: 600px;
+  overflow: hidden;
+  margin: auto;
 }
 .carousel-image-wrapper {
+  position: absolute;
   overflow: hidden;
-  min-height: 600px;
-  display: block;
+  left: 0px;
+  top: 0px;
 }
 
 .carousel-image-item {
-  width: 1200px;
+  width: 1366px;
   float: left;
   display: block;
 }
@@ -31,7 +35,7 @@ img {
   position: absolute;
   cursor: pointer;
   width: auto;
-  top: 50%;
+  top: 40%;
   color: white;
   font-weight: 900;
   font-size: 50px;

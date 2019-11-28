@@ -14,6 +14,7 @@ var automaticSlideInstance;
 carouselImageWrapper.style.width = numberOfImages * IMAGE_WIDTH + 'px';
 
 var carouselNavigationContainer = [];
+
 for (var i = 0; i < numberOfImages; ++i) {
   var navigationDot = document.createElement('span');
   navigationDot.setAttribute('image-index', i);

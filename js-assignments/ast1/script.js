@@ -82,7 +82,7 @@ function animateSlide(oldIndex, currentIndex) {
 
 
 function goToNextImage() {
-  // clearInterval(automaticSlideInstance);
+  clearInterval(automaticSlideInstance);
   var oldIndex = currentIndex;
   var oldDot = carouselNavigationContainer[oldIndex];
 
@@ -93,11 +93,12 @@ function goToNextImage() {
 
   animateSlide(oldIndex, currentIndex);
 
-  // setTimeout(automaticSlideInstance)
+  setTimeout(automaticSlide, 0);
 
 }
 
 function goToPreviousImage() {
+  clearInterval(automaticSlideInstance);
   var oldIndex = currentIndex;
   var oldDot = carouselNavigationContainer[oldIndex];
 
@@ -107,9 +108,11 @@ function goToPreviousImage() {
   changeNavigationDot(oldDot, currentDot);
   animateSlide(oldIndex, currentIndex);
 
+  setTimeout(automaticSlide, 0);
 }
 
 function goToSlide(e) {
+  clearInterval(automaticSlideInstance);
 
   var oldIndex = currentIndex;
   var oldDot = carouselNavigationContainer[oldIndex];
@@ -123,6 +126,8 @@ function goToSlide(e) {
   var newLeft = -(currentIndex * IMAGE_WIDTH);
 
   animateSlide(oldIndex, currentIndex);
+
+  setTimeout(automaticSlide, 0);
 
 }
 

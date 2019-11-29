@@ -5,10 +5,11 @@
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  function Circle(parentElement, speed, minRadius, maxRadius) {
+  function Circle(parentElement, speed, radius) {
     this.parentElement = parentElement;
     this.element = document.createElement('div');
-    this.radius = getRandomNumberBetween(minRadius, maxRadius)
+    // this.radius = getRandomNumberBetween(minRadius, maxRadius)
+    this.radius = radius
     this.diameter = this.radius * 2;
     // this.speed = getRandomNumberBetween(1, 5) * speed;
     this.speed = speed;
@@ -45,17 +46,19 @@
     this.y += this.speed * this.direction.y;
 
     if (this.x + this.diameter >= MAX_WIDTH) {
-      this.direction.x = -this.direction.x || -1;
+      // this.direction.x = -this.direction.x || -1;
+      this.direction.x = -1;
     }
     if (this.y + this.diameter >= MAX_HEIGHT) {
-      this.direction.y = -this.direction.y || -1;
+      // this.direction.y = -this.direction.y || -1;
+      this.direction.y = -1;
     }
 
     if (this.x <= 0) {
-      this.direction.x = -this.direction.x || 1;
+      this.direction.x = 1;
     }
     if (this.y <= 0) {
-      this.direction.y = -this.direction.y || 1;
+      this.direction.y = 1;
     }
 
     this.draw();
@@ -90,7 +93,7 @@
     }
   }
 
-  function Game(parentElement, maxWidth, maxHeight, numberOfCircles, minRadius, maxRadius, speed) {
+  function Game(parentElement, maxWidth, maxHeight, numberOfCircles, radius, speed) {
     this.FPS = 30;
     this.parentElement = parentElement;
     this.numberOfCircles = numberOfCircles;
@@ -99,8 +102,9 @@
     this.width = maxWidth;
     this.height = maxHeight;
     this.speed = speed;
-    this.minRadius = minRadius;
-    this.maxRadius = maxRadius;
+    // this.minRadius = minRadius;
+    // this.maxRadius = maxRadius;
+    this.radius = radius;
     this.circles = [];
     this.init();
   }
@@ -123,7 +127,7 @@
       var isOverlapped = true;
 
       while (isOverlapped) {
-        circle = new Circle(this.element, this.speed, this.minRadius, this.maxRadius);
+        circle = new Circle(this.element, this.speed, this.radius);
         if (!this.checkOverlap(circle)) {
           isOverlapped = false;
         }
@@ -166,5 +170,5 @@
     }
     return false;
   }
-  new Game(document.getElementById('app'), 500, 500, 10, 10, 20, 1).init();
+  new Game(document.getElementById('app'), 500, 500, 10, 20, 1.5);
 })();

@@ -10,7 +10,7 @@
     this.element = document.createElement('div');
     this.radius = getRandomNumberBetween(minRadius, maxRadius)
     // this.radius = radius;
-    var colorList = ['#1a1aff', '#ff4d4d', ' #1aff66', '#b32d00', '#330033'];
+    var colorList = ['#1a1aff', '#ff4d4d', ' #1aff66', '#b32d00', '#330033', '#33ff33'];
     this.color = colorList[getRandomNumberBetween(0, colorList.length)];
     this.diameter = this.radius * 2;
     this.speed = getRandomNumberBetween(1, 5) * speed;
@@ -68,7 +68,6 @@
 
     this.draw();
   }
-  Circle.prototype.onClick = function () { }
   Circle.prototype.detectCollision = function (circles) {
     for (var i = 0; i < circles.length; ++i) {
       var circle = circles[i];
@@ -103,6 +102,20 @@
           }
           break;
         }
+      }
+    }
+  }
+  Circle.prototype.onClick = function (circles) {
+    this.element.addEventListener('click', this.removeChild.bind(this, circles));
+  }
+  Circle.prototype.removeChild = function (circles) {
+    this.element.style.display = 'none';
+    this.parentElement.removeChild(this.element);
+    for (i = 0; i < circles.length; ++i) {
+      var circle = circles[i];
+      if (circle.element === this.element) {
+        circles.splice(i, 1);
+        break;
       }
     }
   }
@@ -161,10 +174,8 @@
       }
 
       circle.generate();
-      // circle.onClick(this.circles)
+      circle.onClick(this.circles);
       this.circles.push(circle);
-      console.log(this.numberOfCircles);
-
     }
   }
   Game.prototype.moveCircles = function () {
@@ -198,5 +209,5 @@
     }
     return false;
   }
-  new Game(document.getElementById('app'), 1000, 600, 50, 5, 20, 1);
+  new Game(document.getElementById('app'), 1000, 600, 10, 5, 20, 1);
 })();

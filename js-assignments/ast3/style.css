@@ -8,8 +8,7 @@
 }
 
 /* #app {
-  height: 700px;
-  width: 700px;
+ padding: 30px 0;
   background: #dfdfdf;
   position: relative;
   margin: auto;
@@ -26,7 +25,12 @@
   background-color: #222;
 }
 .circle-game {
+  margin: 50px auto;
   background: #dfdfdf;
   position: relative;
-  margin: auto;
+}
+.alert {
+  background: red;
+  color: white;
+  font-size: 18px;
 }

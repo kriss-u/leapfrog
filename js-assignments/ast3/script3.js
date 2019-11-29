@@ -1,4 +1,6 @@
 ; (function () {
+  var MAX_HEIGHT;
+  var MAX_WIDTH;
   function getRandomNumberBetween(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
@@ -10,8 +12,8 @@
     this.diameter = this.radius * 2;
     // this.speed = getRandomNumberBetween(1, 5) * speed;
     this.speed = speed;
-    this.x = getRandomNumberBetween(0, this.parentElement.maxWidth - this.diameter);
-    this.y = getRandomNumberBetween(0, this.parentElement.maxHeight - this.diameter);
+    this.x = getRandomNumberBetween(0, MAX_WIDTH - this.diameter);
+    this.y = getRandomNumberBetween(0, MAX_HEIGHT - this.diameter);
     this.center = {
       x: this.x + this.radius,
       y: this.y + this.radius
@@ -42,10 +44,10 @@
     this.x += this.speed * this.direction.x;
     this.y += this.speed * this.direction.y;
 
-    if (this.x + this.diameter >= this.parentElement.maxWidth) {
+    if (this.x + this.diameter >= MAX_WIDTH) {
       this.direction.x = -this.direction.x || -1;
     }
-    if (this.y + this.diameter >= this.parentElement.maxHeight) {
+    if (this.y + this.diameter >= MAX_HEIGHT) {
       this.direction.y = -this.direction.y || -1;
     }
 
@@ -103,6 +105,8 @@
     this.init();
   }
   Game.prototype.init = function () {
+    MAX_WIDTH = this.width;
+    MAX_HEIGHT = this.height;
     this.setStyles();
     this.getCircles();
     this.moveCircles();

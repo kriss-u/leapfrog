@@ -1,0 +1,32 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* #app {
+  height: 700px;
+  width: 700px;
+  background: #dfdfdf;
+  position: relative;
+  margin: auto;
+} */
+
+.box {
+  background: red;
+  position: absolute;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #888;
+}
+.circle-game {
+  background: #dfdfdf;
+  position: relative;
+  margin: auto;
+}

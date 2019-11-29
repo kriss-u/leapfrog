@@ -38,11 +38,13 @@ automaticSlide();
  * @param {HTMLElement} newDot - The current navigation dot
  */
 function changeNavigationDot(oldDot, newDot) {
-  oldDot.classList.remove('active');
+  if (oldDot) {
+    oldDot.classList.remove('active');
+  }
   newDot.classList.add('active');
 }
 
-changeNavigationDot(carouselNavigationContainer[2], carouselNavigationContainer[currentIndex]);
+changeNavigationDot(null, carouselNavigationContainer[currentIndex]);
 
 /**
  * Changes slide to new image

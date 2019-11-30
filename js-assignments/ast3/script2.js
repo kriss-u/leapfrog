@@ -36,32 +36,17 @@
       y: getRandomDirection()
     }
   }
-  Circle.prototype.flipX = function () {
-    this.element.getElementsByTagName('img')[0].style.transform = 'scaleX(-1)';
-  }
   Circle.prototype.generate = function () {
     this.element.classList.add('circle');
     this.element.style.height = this.diameter + 'px';
     this.element.style.width = this.diameter + 'px';
-    // this.element.style.backgroundColor = this.color;
-    // this.parentElement.appendChild(this.element);
-
-    this.ant = document.createElement('img');
-    this.ant.src = 'ant.gif';
-    this.element.appendChild(this.ant);
+    this.element.style.backgroundColor = this.color;
     this.parentElement.appendChild(this.element);
-
     this.draw();
   }
   Circle.prototype.draw = function () {
     this.element.style.left = this.x + 'px';
     this.element.style.top = this.y + 'px';
-
-    if (this.direction.x === -1) {
-      this.ant.style.transform = 'scaleX(-1)';
-    } else {
-      this.ant.style.transform = 'scaleX(1)';
-    }
   }
   Circle.prototype.move = function () {
     this.x += this.speed * this.direction.x;

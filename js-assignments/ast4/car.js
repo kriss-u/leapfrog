@@ -4,6 +4,7 @@ var CAR_WIDTH = 40;
 var CAR_HEIGHT = 70;
 var GAME_HEIGHT = 600;
 var CAR_SPEED = 1;
+var AMMO_AMOUNT = 10;
 
 var carImages = [
   './images/fancy-car.png',
@@ -23,6 +24,7 @@ function Car(parentElement) {
   this.heightRatioPercent = 0;
   this.positionX = positionsOfCar[getRandomNumberBetween(0, 3)];
   this.positionY = POSITION_Y;
+  this.ammoAmount = AMMO_AMOUNT;
   this.init();
 }
 
@@ -57,7 +59,14 @@ Car.prototype.goRight = function () {
   }
 }
 
-function EnemyCar(parentElement) {
+Car.prototype.fire = function () {
+  if (this.ammoAmount > 0) {
+    var bullet = new Bullet(document.querySelector('.asphalt'), this.positionX);
+    this.ammoAmount--;
+  }
+}
+function EnemyCar(parentElement, playingCar) {
+  this.playingCar = playingCar;
   Car.call(this, parentElement);
 }
 
@@ -68,6 +77,7 @@ EnemyCar.prototype.init = function () {
   this.speed = CAR_SPEED;
   this.setStyles();
   this.element.style.transform = 'translate(-50%, 0%)';
+  // this.positionX = positionsOfCar[getRandomNumberBetween(0, 3)];
   this.positionY = 100;
   this.image.src = carImages[getRandomNumberBetween(0, carImages.length)];
 
@@ -84,30 +94,5 @@ EnemyCar.prototype.invalidate = function () {
     return true;
   }
   return false;
-}
-
-EnemyCar.prototype.detectObstacle = function (cars) {
-  var positionOffset = 7;
-  var lowSpeed = 0.5;
-
-  for (var i = 0; i < cars.length; ++i) {
-    var car = cars[i];
-    if (this.positionX == car.positionX && this.positionY > car.positionY) {
-      if (this.positionY - positionOffset <= car.positionY + car.heightRatioPercent) {
-        this.speed = lowSpeed;
-        break;
-      }
-    }
-  }
-}
-EnemyCar.prototype.detectCollision = function (cars) {
-  for (var i = 0; i < cars.length; ++i) {
-    var car = cars[i];
-    if (car.element != this.element) {
-      if (this.positionX == car.positionX && car.positionY <= this.positionY + this.height && this.positionY <= car.positionY + car.height) {
-        break;
-      }
-    }
-  }
 }
 

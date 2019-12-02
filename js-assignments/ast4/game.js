@@ -12,6 +12,8 @@ function Game(parentElement) {
   this.parentElement.appendChild(this.element);
   this.asphalt = new Asphalt(this.element);
   this.isGameOver = false;
+  this.isGameStarted = false;
+  this.playingCar = null;
   this.init();
 }
 
@@ -20,7 +22,7 @@ Game.prototype.init = function () {
     this.showStartButton();
   }
   this.setStyles();
-  this.createPlayingCar();
+  this.playingCar = this.createPlayingCar();
   this.playerControl();
 }
 
@@ -39,7 +41,8 @@ Game.prototype.restartGame = function () {
 }
 
 Game.prototype.startGame = function () {
-  this.createEnemyCars();
+  this.isGameStarted = true;
+  this.createEnemyCars(this.playingCar);
   this.loop();
 }
 
@@ -50,14 +53,15 @@ Game.prototype.setStyles = function () {
 Game.prototype.createPlayingCar = function () {
   this.playingCar = new Car(document.querySelector('.asphalt'));
   this.playingCar.draw();
+  return this.playingCar;
 }
 
-Game.prototype.createEnemyCars = function () {
+Game.prototype.createEnemyCars = function (playingCar) {
   this.enemyCars = [];
   this.enemyInterval = setInterval(function () {
-    var car = new EnemyCar(document.getElementsByClassName('asphalt')[0]);
+    var car = new EnemyCar(document.getElementsByClassName('asphalt')[0], playingCar);
     this.enemyCars.push(car);
-  }.bind(this), CAR_INTERVAL);
+  }.bind(this, playingCar), getRandomNumberBetween(CAR_INTERVAL - 300, CAR_INTERVAL + 300));
 }
 
 Game.prototype.playerControl = function () {
@@ -65,12 +69,16 @@ Game.prototype.playerControl = function () {
 }
 
 Game.prototype.onKeyPress = function (e) {
-  if (e.key === 'ArrowLeft') {
-    this.playingCar.goLeft();
-  } else if (e.key === 'ArrowRight') {
-    this.playingCar.goRight();
+  if (this.isGameStarted && !this.isGameOver) {
+    if (e.key === 'ArrowLeft') {
+      this.playingCar.goLeft();
+    } else if (e.key === 'ArrowRight') {
+      this.playingCar.goRight();
+    } else if (e.key === ' ') {
+      this.playingCar.fire();
+    }
+    this.playingCar.draw();
   }
-  this.playingCar.draw();
 }
 
 
@@ -78,7 +86,7 @@ Game.prototype.moveEnemyCars = function () {
   for (var i = 0; i < this.enemyCars.length; ++i) {
     var enemyCar = this.enemyCars[i];
     enemyCar.goDown();
-    enemyCar.detectObstacle(this.enemyCars);
+    // enemyCar.detectObstacle(this.enemyCars);
     enemyCar.draw();
 
     if (enemyCar.invalidate()) {
@@ -103,6 +111,7 @@ Game.prototype.checkGameOver = function () {
 }
 Game.prototype.postGameOver = function () {
   if (this.isGameOver) {
+    this.isGameStarted = false;
     this.element.removeEventListener('keydown', this.playerControlEventListener);
     clearInterval(this.enemyInterval);
     clearInterval(this.loopInterval);

@@ -11,7 +11,32 @@ img {
   height: 100%;
   display: block;
 }
+#app {
+  position: relative;
+}
+.asphalt {
+  position: relative;
+  width: 50%;
+  margin: auto;
+  height: 600px;
+  background: url('./images/asphalt-road-3.png');
+  background-size: 100%;
+}
+.score-container {
+  position: absolute;
+  right: 0%;
+  top: 20vh;
+  display: inline-block;
+}
+.car {
+  position: absolute;
+  transform: translate(-50%, 0);
+  display: block;
+  width: 50px;
+  height: 80px;
 
+}
 .game {
-  width: 700px;
+  position: relative;
+  overflow: hidden;
 }

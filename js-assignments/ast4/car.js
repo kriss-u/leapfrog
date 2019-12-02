@@ -89,7 +89,7 @@ EnemyCar.prototype.invalidate = function () {
 }
 
 EnemyCar.prototype.detectObstacle = function (cars) {
-  var positionOffset = 5;
+  var positionOffset = 7;
   var lowSpeed = 0.5;
 
   for (var i = 0; i < cars.length; ++i) {

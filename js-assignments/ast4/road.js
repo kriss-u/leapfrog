@@ -7,11 +7,15 @@ function Asphalt(parentElement) {
 
   this.speed = BACKGROUND_SCROLL_SPEED;
   this.score = 0;
+  this.highScore = Number(localStorage.getItem('highScore')) || 0;
   this.backgroundPosition = 0;
   this.scoreContainer = document.createElement('div');
+  this.highScoreContainer = document.createElement('div');
 
   this.parentElement.appendChild(this.scoreContainer);
-  this.scoreContainer.innerText = 'Score';
+  this.parentElement.appendChild(this.highScoreContainer);
+  this.scoreContainer.innerText = 'Score\n' + this.score;
+  this.highScoreContainer.innerText = 'High Score\n' + this.highScore;
 
   this.init();
 }
@@ -23,6 +27,7 @@ Asphalt.prototype.init = function () {
 Asphalt.prototype.setStyles = function () {
   this.element.classList.add('asphalt');
   this.scoreContainer.classList.add('score-container');
+  this.highScoreContainer.classList.add('high-score-container');
 }
 
 Asphalt.prototype.move = function () {
@@ -32,4 +37,5 @@ Asphalt.prototype.move = function () {
 
 Asphalt.prototype.incrementScore = function () {
   this.score++;
+  this.scoreContainer.innerText = 'Score\n' + this.score;
 }

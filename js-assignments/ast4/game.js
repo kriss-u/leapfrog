@@ -52,6 +52,7 @@ Game.prototype.onKeyPress = function (e) {
   this.playingCar.draw();
 }
 
+
 Game.prototype.moveEnemyCars = function () {
   for (var i = 0; i < this.enemyCars.length; ++i) {
     var enemyCar = this.enemyCars[i];
@@ -81,6 +82,7 @@ Game.prototype.checkGameOver = function () {
 }
 Game.prototype.postGameOver = function () {
   if (this.isGameOver) {
+    this.element.removeEventListener('keydown', this.playerControlEventListener);
     clearInterval(this.enemyInterval);
     clearInterval(this.loopInterval);
     if (this.asphalt.score > localStorage.getItem('highScore')) {

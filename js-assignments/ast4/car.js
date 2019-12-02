@@ -1,7 +1,7 @@
 var positionsOfCar = [16.6666, 49.9999, 83.3333];
 var POSITION_Y = 7;
-var CAR_WIDTH = 50;
-var CAR_HEIGHT = 80;
+var CAR_WIDTH = 40;
+var CAR_HEIGHT = 70;
 var GAME_HEIGHT = 600;
 var CAR_SPEED = 1;
 
@@ -25,22 +25,19 @@ function Car(parentElement) {
   this.positionY = POSITION_Y;
   this.init();
 }
+
 Car.prototype.init = function () {
   this.setStyles();
 }
 Car.prototype.setStyles = function () {
   this.element.classList.add('car');
   this.element.style.width = this.width + 'px';
-  // this.element.style.height = this.height + 'px';
   this.image = document.createElement('img');
   this.image.src = './images/fancy-car.png';
   this.element.appendChild(this.image);
 
-  this.height = this.element.clientHeight;
-
+  // this.height = this.element.clientHeight;
   this.heightRatioPercent = this.height / GAME_HEIGHT * 100;
-
-
 }
 
 Car.prototype.draw = function () {

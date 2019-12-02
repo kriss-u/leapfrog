@@ -11,6 +11,9 @@ img {
   height: 100%;
   display: block;
 }
+body {
+  background-color: black;
+}
 #app {
   position: relative;
 }
@@ -28,12 +31,14 @@ img {
   top: 0%;
   display: inline-block;
   font-size: 20px;
+  color: white;
 }
 .high-score-container {
   position: absolute;
   left: 15%;
   top: 0%;
   display: inline-block;
+  color: white;
   font-size: 20px;
 }
 .start-game-button {
@@ -43,6 +48,7 @@ img {
   display: inline-block;
   font-size: 20px;
   transform: translate(-50%, -50%);
+  z-index: 5;
 }
 .car {
   position: absolute;
@@ -54,4 +60,13 @@ img {
 .game {
   position: relative;
   overflow: hidden;
+}
+
+.game-over-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: white;
 }

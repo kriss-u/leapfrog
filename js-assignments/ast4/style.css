@@ -36,6 +36,14 @@ img {
   display: inline-block;
   font-size: 20px;
 }
+.start-game-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-block;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+}
 .car {
   position: absolute;
   transform: translate(-50%, 0);

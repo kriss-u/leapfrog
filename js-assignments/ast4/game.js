@@ -3,7 +3,7 @@ function getRandomNumberBetween(min, max) {
 }
 
 var FPS = 60;
-var CAR_INTERVAL = 1000;
+var CAR_INTERVAL = 800;
 
 function Game(parentElement) {
   this.parentElement = parentElement;
@@ -88,6 +88,17 @@ Game.prototype.postGameOver = function () {
     if (this.asphalt.score > localStorage.getItem('highScore')) {
       localStorage.setItem('highScore', this.asphalt.score);
     }
+    setTimeout(function () {
+      var startGameButton = document.querySelector('.start-game-button');
+      startGameButton.innerText = 'Retry';
+      startGameButton.style.display = 'block';
+      var rootElement = document.getElementById('app');
+      startGameButton.onclick = function () {
+        rootElement.removeChild(rootElement.querySelector('.game'));
+        startGameButton.style.display = 'none';
+        new Game(rootElement).startGame();
+      }.bind(this);
+    }, 0);
   }
 }
 Game.prototype.loop = function () {
@@ -98,4 +109,19 @@ Game.prototype.loop = function () {
   }.bind(this), 1000 / FPS)
 }
 
-new Game(document.getElementById('app')).startGame();
+function main() {
+  var startGameButton = document.createElement('button');
+  var rootElement = document.getElementById('app');
+  var game = new Game(document.getElementById('app'));
+
+  rootElement.appendChild(startGameButton);
+  startGameButton.innerText = 'Start Game';
+  startGameButton.classList.add('start-game-button');
+
+  startGameButton.onclick = function () {
+    game.startGame();
+    startGameButton.style.display = 'none';
+  }.bind(this);
+}
+
+main();

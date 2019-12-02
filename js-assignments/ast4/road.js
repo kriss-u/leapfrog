@@ -1,5 +1,5 @@
 var FPS = 60;
-var BACKGROUND_SCROLL_SPEED = 2;
+var BACKGROUND_SCROLL_SPEED = 5;
 function Asphalt(parentElement) {
   this.parentElement = parentElement;
   this.element = document.createElement('div');
@@ -12,10 +12,12 @@ function Asphalt(parentElement) {
   this.scoreContainer = document.createElement('div');
   this.highScoreContainer = document.createElement('div');
 
+
   this.parentElement.appendChild(this.scoreContainer);
   this.parentElement.appendChild(this.highScoreContainer);
   this.scoreContainer.innerText = 'Score\n' + this.score;
   this.highScoreContainer.innerText = 'High Score\n' + this.highScore;
+
 
   this.init();
 }

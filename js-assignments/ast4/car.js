@@ -3,6 +3,7 @@ var POSITION_Y = 7;
 var CAR_WIDTH = 50;
 var CAR_HEIGHT = 80;
 var GAME_HEIGHT = 600;
+var CAR_SPEED = 1;
 
 var carImages = [
   './images/fancy-car.png',
@@ -67,9 +68,9 @@ EnemyCar.prototype = Object.create(Car.prototype);
 EnemyCar.prototype.constructor = EnemyCar;
 
 EnemyCar.prototype.init = function () {
-  this.speed = getRandomNumberBetween(1, 2);
+  this.speed = CAR_SPEED;
   this.setStyles();
-  this.element.style.transform = 'scaleY(-1) translate(-50%, 0%)';
+  this.element.style.transform = 'translate(-50%, 0%)';
   this.positionY = 100;
   this.image.src = carImages[getRandomNumberBetween(0, carImages.length)];
 

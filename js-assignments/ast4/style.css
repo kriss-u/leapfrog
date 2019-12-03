@@ -41,6 +41,14 @@ body {
   color: white;
   font-size: 20px;
 }
+.ammo-container {
+   position: absolute;
+  left: 15%;
+  top: 50%;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+}
 .start-game-button {
   position: absolute;
   left: 50%;
@@ -77,5 +85,5 @@ body {
   position: absolute;
   background-color: white;
   z-index: 10;
-  transform: translate(-50%, 0%);
+  transform: translate(-50%, -50%);
 }

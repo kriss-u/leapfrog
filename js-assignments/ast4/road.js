@@ -11,12 +11,16 @@ function Asphalt(parentElement) {
   this.backgroundPosition = 0;
   this.scoreContainer = document.createElement('div');
   this.highScoreContainer = document.createElement('div');
+  this.ammoContainer = document.createElement('div');
 
 
   this.parentElement.appendChild(this.scoreContainer);
   this.parentElement.appendChild(this.highScoreContainer);
+  this.parentElement.appendChild(this.ammoContainer);
+
   this.scoreContainer.innerText = 'Score\n' + this.score;
   this.highScoreContainer.innerText = 'High Score\n' + this.highScore;
+  this.ammoContainer.innerText = 'Ammo Amount\n' + 0;
 
 
   this.init();
@@ -30,6 +34,7 @@ Asphalt.prototype.setStyles = function () {
   this.element.classList.add('asphalt');
   this.scoreContainer.classList.add('score-container');
   this.highScoreContainer.classList.add('high-score-container');
+  this.ammoContainer.classList.add('ammo-container');
 }
 
 Asphalt.prototype.move = function () {

@@ -23,6 +23,7 @@ Game.prototype.init = function () {
   }
   this.setStyles();
   this.playingCar = this.createPlayingCar();
+  this.playingCar.generateBullets();
   this.playerControl();
 }
 
@@ -103,7 +104,7 @@ Game.prototype.moveEnemyCars = function () {
 Game.prototype.checkGameOver = function () {
   for (var i = 0; i < this.enemyCars.length; ++i) {
     var enemyCar = this.enemyCars[i];
-    if (Math.round(enemyCar.positionX) == Math.round(this.playingCar.positionX) && Math.round(enemyCar.positionY) <= Math.round(this.playingCar.positionY + this.playingCar.heightRatioPercent) && Math.round(enemyCar.positionY + enemyCar.heightRatioPercent) >= Math.round(this.playingCar.positionY)) {
+    if (Math.round(enemyCar.positionX) == Math.round(this.playingCar.positionX) && enemyCar.positionY <= this.playingCar.positionY + this.playingCar.heightRatioPercent && enemyCar.positionY + enemyCar.heightRatioPercent >= this.playingCar.positionY) {
       return true;
     }
   }
@@ -115,6 +116,8 @@ Game.prototype.postGameOver = function () {
     this.element.removeEventListener('keydown', this.playerControlEventListener);
     clearInterval(this.enemyInterval);
     clearInterval(this.loopInterval);
+    clearInterval(this.playingCar.generateBulletsInterval);
+
     if (this.asphalt.score > localStorage.getItem('highScore')) {
       localStorage.setItem('highScore', this.asphalt.score);
     }
@@ -126,13 +129,28 @@ Game.prototype.postGameOver = function () {
       this.parentElement.removeChild(this.element);
       new Game(document.getElementById('app'));
     }.bind(this), 2000);
-
   }
 }
+
+Game.prototype.checkHitBullet = function () {
+  for (var i = 0; i < this.playingCar.bullets.length; ++i) {
+    var bullet = this.playingCar.bullets[i];
+    if (bullet.positionY >= 100) {
+      this.playingCar.bullets.splice(i, 1);
+      this.asphalt.element.removeChild(bullet.element);
+      break;
+    }
+    if (bullet.hasHitCar(this.enemyCars, this.playingCar.bullets)) {
+      this.asphalt.incrementScore();
+    }
+  }
+}
+
 Game.prototype.loop = function () {
   this.loopInterval = setInterval(function () {
     this.asphalt.move();
     this.moveEnemyCars();
+    this.checkHitBullet();
     this.postGameOver();
   }.bind(this), 1000 / FPS)
 }

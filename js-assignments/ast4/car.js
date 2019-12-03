@@ -1,10 +1,12 @@
-var positionsOfCar = [16.6666, 49.9999, 83.3333];
+var positionsOfCar = [16.6666, 49.9999, 83.3332];
 var POSITION_Y = 7;
 var CAR_WIDTH = 40;
 var CAR_HEIGHT = 70;
 var GAME_HEIGHT = 600;
 var CAR_SPEED = 1;
-var AMMO_AMOUNT = 10;
+var BULLET_FIRE_RATE = 500;
+var TOTAL_AMMO = 10;
+var ammoAmount = TOTAL_AMMO;
 
 var carImages = [
   './images/fancy-car.png',
@@ -24,13 +26,18 @@ function Car(parentElement) {
   this.heightRatioPercent = 0;
   this.positionX = positionsOfCar[getRandomNumberBetween(0, 3)];
   this.positionY = POSITION_Y;
-  this.ammoAmount = AMMO_AMOUNT;
+  this.ammoAmount = ammoAmount;
+  this.bullets = [];
+  this.asphalt = document.querySelector('.asphalt');
+  this.canFire = true;
+  this.asphalt.parentElement.querySelector('.ammo-container').innerText = 'Ammo Amount\n' + this.ammoAmount;
   this.init();
 }
 
 Car.prototype.init = function () {
   this.setStyles();
 }
+
 Car.prototype.setStyles = function () {
   this.element.classList.add('car');
   this.element.style.width = this.width + 'px';
@@ -60,10 +67,24 @@ Car.prototype.goRight = function () {
 }
 
 Car.prototype.fire = function () {
-  if (this.ammoAmount > 0) {
-    var bullet = new Bullet(document.querySelector('.asphalt'), this.positionX);
-    this.ammoAmount--;
+  if (this.ammoAmount >= 1 && this.canFire) {
+    var bullet = new Bullet(this.asphalt, this.positionX, this.positionY + this.heightRatioPercent);
+    this.bullets.push(bullet);
+    ammoAmount--;
+    this.asphalt.parentElement.querySelector('.ammo-container').innerText = 'Ammo Amount\n' + --this.ammoAmount;
+    this.canFire = false;
+    setTimeout(function () {
+      this.canFire = true;
+    }.bind(this), BULLET_FIRE_RATE);
   }
+}
+
+Car.prototype.generateBullets = function () {
+  this.generateBulletsInterval = setInterval(function () {
+    if (this.ammoAmount < 10) {
+      this.ammoAmount = ++ammoAmount;
+    }
+  }.bind(this), 7000);
 }
 function EnemyCar(parentElement, playingCar) {
   this.playingCar = playingCar;

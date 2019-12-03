@@ -39,7 +39,7 @@ Bullet.prototype.hasHitCar = function (cars, bullets) {
   var asphalt = document.querySelector('.asphalt');
   for (var i = 0; i < cars.length; ++i) {
     var car = cars[i];
-    if (Math.round(this.positionX) === Math.round(car.positionX) && this.positionY >= car.positionY) {
+    if (Math.round(this.positionX) === Math.round(car.positionX) && this.positionY >= car.positionY - car.heightRatioPercent) {
       this.parentElement.removeChild(car.element);
       cars.splice(i, 1);
 

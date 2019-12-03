@@ -3,7 +3,7 @@ function getRandomNumberBetween(min, max) {
 }
 
 var FPS = 60;
-var CAR_INTERVAL = 600;
+var CAR_INTERVAL = 400;
 
 function Game(parentElement) {
   this.parentElement = parentElement;
@@ -62,7 +62,7 @@ Game.prototype.createEnemyCars = function (playingCar) {
   this.enemyInterval = setInterval(function () {
     var car = new EnemyCar(document.getElementsByClassName('asphalt')[0], playingCar);
     this.enemyCars.push(car);
-  }.bind(this, playingCar), getRandomNumberBetween(CAR_INTERVAL - 300, CAR_INTERVAL + 300));
+  }.bind(this, playingCar), getRandomNumberBetween(CAR_INTERVAL - 200, CAR_INTERVAL + 200));
 }
 
 Game.prototype.playerControl = function () {
@@ -117,6 +117,7 @@ Game.prototype.postGameOver = function () {
     clearInterval(this.enemyInterval);
     clearInterval(this.loopInterval);
     clearInterval(this.playingCar.generateBulletsInterval);
+    ammoAmount = TOTAL_AMMO;
 
     if (this.asphalt.score > localStorage.getItem('highScore')) {
       localStorage.setItem('highScore', this.asphalt.score);

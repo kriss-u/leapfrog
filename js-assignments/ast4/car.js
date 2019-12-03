@@ -71,7 +71,8 @@ Car.prototype.fire = function () {
     var bullet = new Bullet(this.asphalt, this.positionX, this.positionY + this.heightRatioPercent);
     this.bullets.push(bullet);
     ammoAmount--;
-    this.asphalt.parentElement.querySelector('.ammo-container').innerText = 'Ammo Amount\n' + --this.ammoAmount;
+    this.ammoAmount--;
+    this.asphalt.parentElement.querySelector('.ammo-container').innerText = 'Ammo Amount\n' + this.ammoAmount;
     this.canFire = false;
     setTimeout(function () {
       this.canFire = true;
@@ -97,6 +98,7 @@ EnemyCar.prototype.constructor = EnemyCar;
 EnemyCar.prototype.init = function () {
   this.speed = CAR_SPEED;
   this.setStyles();
+  this.ammoAmount = this.playingCar.ammoAmount;
   this.element.style.transform = 'translate(-50%, 0%)';
   // this.positionX = positionsOfCar[getRandomNumberBetween(0, 3)];
   this.positionY = 100;

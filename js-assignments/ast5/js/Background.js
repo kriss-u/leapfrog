@@ -15,7 +15,6 @@ class Background {
     this.canvas = this.createCanvas();
     this.parentElement.appendChild(this.canvas);
     this.ctx = this.canvas.getContext('2d');
-    this.draw();
   }
 
   createCanvas() {
@@ -31,6 +30,6 @@ class Background {
     backgroundImage.onload = () => {
       this.ctx.drawImage(backgroundImage, this.x, this.y, this.width, this.height);
     }
-    backgroundImage.src = '../images/background.png';
+    backgroundImage.src = 'images/background.png';
   }
 }

@@ -48,9 +48,10 @@ class Game {
   }
 
   start() {
-
-    this.createGameObjects();
-
+    if (!this.isInProgress) {
+      this.isInProgress = true;
+      this.loop();
+    }
   }
 
   createElement() {
@@ -64,6 +65,7 @@ class Game {
   createGameObjects() {
     // Create a new background canvas
     this.background = new Background(this);
+
     this.gameLayer = new GameLayer(this);
   }
 
@@ -72,12 +74,14 @@ class Game {
       this.animationFrame = window.requestAnimationFrame(this.loop.bind(this));
     }
     this.clearScreen();
+    this.render();
   }
 
   render() {
     switch (this.currentState) {
-      case Game.states.START_SCREEN:
-        this.background.init();
+      case this.states.START_SCREEN:
+        this.background.draw();
+        this.gameLayer.backgroundScroll.draw();
         break;
     }
   }
@@ -101,5 +105,5 @@ class Game {
 
 
 const game = new Game(document.getElementById('app'), 480, 640);
-
+game.start();
 // game.consoleLog(game.ctx);

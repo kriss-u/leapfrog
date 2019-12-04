@@ -10,7 +10,6 @@ class Pipe {
     this.init();
   }
   init() {
-    this.draw();
   }
   draw() {
     const image = new Image();
@@ -25,7 +24,7 @@ class Pipe {
       this.ctx.drawImage(image, 200, scaleY() * this.ctx.canvas.height - 128 - 240 + 80, PIPE_WIDTH, PIPE_HEIGHT);
       // window.requestAnimationFrame(this.draw.bind(this));
     }
-    image.src = '../images/pipe.png';
+    image.src = 'images/pipe.png';
     // window.requestAnimationFrame(this.draw.bind(this));
   }
 }

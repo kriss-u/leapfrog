@@ -14,7 +14,6 @@ class BackgroundScroll {
     this.init();
   }
   init() {
-    this.draw();
   }
   draw() {
     const image = new Image();
@@ -25,7 +24,7 @@ class BackgroundScroll {
       if (imgWidth === this.ctx.canvas.width)
         imgWidth = 0;
     }
-    image.src = '../images/ground-full.png';
+    image.src = 'images/ground-full.png';
     if (this.game.currentState !== this.game.states.END_SCREEN)
       window.requestAnimationFrame(this.draw.bind(this));
   }

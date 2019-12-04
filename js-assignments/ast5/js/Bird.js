@@ -10,7 +10,6 @@ class Bird {
     this.init();
   }
   init() {
-    this.draw();
   }
   draw() {
     const image = new Image();

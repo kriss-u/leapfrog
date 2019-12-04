@@ -18,11 +18,15 @@ class BackgroundScroll {
   draw() {
     const image = new Image();
     image.onload = () => {
-      this.ctx.drawImage(image, -imgWidth, this.y);
-      this.ctx.drawImage(image, this.canvas.width - imgWidth, this.y);
-      imgWidth += 3;
-      if (imgWidth === this.ctx.canvas.width)
-        imgWidth = 0;
+      setTimeout(() => {
+        this.ctx.drawImage(image, -imgWidth, this.y);
+        this.ctx.drawImage(image, this.canvas.width - imgWidth, this.y);
+        imgWidth += 3;
+        if (imgWidth === this.ctx.canvas.width) {
+          imgWidth = 0;
+        }
+      }, 0);
+
     }
     image.src = 'images/ground-full.png';
     // if (this.game.currentState !== this.game.states.END_SCREEN)

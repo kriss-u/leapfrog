@@ -9,14 +9,6 @@ class Game {
     this.parentElement = parentElement;
     this.element = this.createElement();
     this.parentElement.appendChild(this.element);
-
-    this.isInProgress = undefined;
-    this.currentState = undefined;
-    this.animationFrame = undefined;
-
-    this.states = GAME_STATES;
-
-    // this.init();
   }
   static get width() {
     return 480;

@@ -9,9 +9,11 @@ class GameLayer {
     this.ctx = this.canvas.getContext('2d');
     this.isInProgress = undefined;
     this.bird = null;
+    this.score = null;
     this.backgroundScroll = null;
     this.pipes = [];
     this.currentState = Game.states.START_SCREEN;
+    this.isSpaceBarPressed = false;
     this.init();
   }
 
@@ -25,6 +27,7 @@ class GameLayer {
   init() {
     this.resetGame();
     this.initializeInputHandlers();
+    this.start();
   }
 
   start() {
@@ -38,7 +41,10 @@ class GameLayer {
     if (this.isInProgress) {
       this.animationFrame = window.requestAnimationFrame(this.loop.bind(this));
     }
-
+    this.clearScreen();
+    this.render();
+    this.update();
+    this.handleInput();
   }
 
   createCanvas() {
@@ -52,13 +58,15 @@ class GameLayer {
   resetGame() {
     this.resetGameState();
     this.createGameObjects();
-    this.render();
   }
 
   resetGameState() {
     this.isInProgress = undefined;
     this.bird = null;
     this.pipes = [];
+    this.score = null;
+    this.backgroundScroll = null;
+    this.isSpaceBarPressed = false;
     this.currentState = Game.states.START_SCREEN;
   }
 
@@ -66,20 +74,47 @@ class GameLayer {
     this.backgroundScroll = new BackgroundScroll(this.game, this.ctx);
     this.bird = new Bird(this.game, this.ctx);
     this.pipe = new Pipe(this.game, this.ctx);
+    this.score = new Score(this.game, this.ctx);
   }
 
-  render() {
-    this.bird.draw();
-    this.pipe.draw();
-    this.backgroundScroll.draw();
+  clearScreen() {
+    switch (this.currentState) {
+      case Game.states.START_SCREEN:
+      case Game.states.END_SCREEN:
+        break;
+      default:
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        break;
+    }
   }
+  render() {
+    switch (this.currentState) {
+      case Game.states.START_SCREEN:
+        this.bird.animate();
+        this.backgroundScroll.draw();
+        this.score.draw();
+        break;
+      case Game.states.END_SCREEN:
+        this.pipe.draw();
+        break;
+      default:
+        break;
+    }
+  }
+
+  update() { }
+
+  handleInput() {
+    this.bird.handleInput();
+  }
+
   initializeInputHandlers() {
-    document.addEventListener('keydown', this.keyDownHandler.bind(this));
+    document.addEventListener('keydown', this.keyDownHandler.bind(this), false);
   }
 
   keyDownHandler(e) {
     if (e.key === ' ') {
-      console.log("Space Entered!");
+      this.isSpaceBarPressed = true;
     }
   }
 

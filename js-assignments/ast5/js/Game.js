@@ -12,9 +12,6 @@ class Game {
 
     this.width = width;
     this.height = height;
-    this.isInProgress = undefined;
-    this.currentState = undefined;
-    this.animationFrame = null;
     this.states = GAME_STATES;
     this.init();
   }

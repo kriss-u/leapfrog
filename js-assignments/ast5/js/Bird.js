@@ -16,7 +16,7 @@ class Bird {
     image.onload = () => {
       this.ctx.drawImage(image, 0, 0, BIRD_WIDTH, BIRD_HEIGHT, this.x, this.y, BIRD_WIDTH, BIRD_HEIGHT);
     }
-    image.src = '../images/bird.png';
+    image.src = 'images/bird.png';
     this.update(image);
   }
   update(image) {

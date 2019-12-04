@@ -9,6 +9,8 @@ class Game {
     this.parentElement = parentElement;
     this.element = this.createElement();
     this.parentElement.appendChild(this.element);
+
+    this.isSpaceBarPressed = false;
   }
   static get width() {
     return 480;
@@ -42,18 +44,8 @@ class Game {
     this.background.draw();
   }
 
-  // initializeInputHandlers() {
-  //   document.addEventListener('keydown', this.keyDownHandler.bind(this));
-  // }
-
-  // keyDownHandler(e) {
-  //   if (e.key === ' ') {
-  //     this.consoleLog("Space Entered!");
-  //   }
-  // }
 }
 
 
 const game = new Game(document.getElementById('app'));
 game.init();
-// game.consoleLog(game.ctx);

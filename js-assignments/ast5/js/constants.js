@@ -13,6 +13,7 @@ const PIPE_WIDTH = 82;
 const PIPE_HEIGHT = 475;
 const PIPE_DIFFERENCE = 80;
 const MINIMUM_POSITION_OFFSET = 50;
+const PIPE_INTERVAL = 3;
 
 const BIRD_WIDTH = 45;
 const BIRD_HEIGHT = 32;

@@ -13,8 +13,17 @@ class GameLayer {
     this.backgroundScroll = null;
     this.pipes = [];
     this.currentState = Game.states.START_SCREEN;
-    this.isSpaceBarPressed = false;
+    this.lastPipeSpawnedTime = new Date();
+    this.currentTime = new Date();
     this.init();
+  }
+
+  get currentDurationSinceLastSpawn() {
+    return this.currentTime - this.lastPipeSpawnedTime;
+  }
+
+  get pipesCount() {
+    return this.pipes.length;
   }
 
   static get width() {
@@ -66,14 +75,12 @@ class GameLayer {
     this.pipes = [];
     this.score = null;
     this.backgroundScroll = null;
-    this.isSpaceBarPressed = false;
     this.currentState = Game.states.START_SCREEN;
   }
 
   createGameObjects() {
     this.backgroundScroll = new BackgroundScroll(this.game, this.ctx);
     this.bird = new Bird(this.game, this.ctx);
-    this.pipe = new Pipe(this.game, this.ctx);
     this.score = new Score(this.game, this.ctx);
   }
 
@@ -94,18 +101,44 @@ class GameLayer {
         this.backgroundScroll.draw();
         this.score.draw();
         break;
+
+      case Game.states.GAME_SCREEN:
+        this.bird.draw();
+        this.backgroundScroll.draw();
+        this.score.draw();
+
       case Game.states.END_SCREEN:
-        this.pipe.draw();
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  update() {
+    switch (this.game.currentState) {
+      case Game.states.START_SCREEN:
+        this.bird.update();
+        break;
+      case Game.states.GAME_SCREEN:
+        this.pipes.forEach((pipe) => { pipe.draw() });
         break;
       default:
         break;
     }
   }
 
-  update() { }
-
   handleInput() {
     this.bird.handleInput();
+  }
+
+  createPipes() {
+    if (this.currentDurationSinceLastSpawn >= PIPE_INTERVAL) {
+      let x = 400;
+      let y = getRandomNumberBetween(MINIMUM_POSITION_OFFSET, this.canvas.height - GROUND_HEIGHT - MINIMUM_POSITION_OFFSET);
+      let pipe = new Pipe(this.game, this.ctx, x, y);
+      this.pipes.push(pipe);
+    }
   }
 
   initializeInputHandlers() {
@@ -114,7 +147,8 @@ class GameLayer {
 
   keyDownHandler(e) {
     if (e.key === ' ') {
-      this.isSpaceBarPressed = true;
+      this.game.isSpaceBarPressed = true;
+      this.game.currentState = Game.states.GAME_SCREEN;
     }
   }
 

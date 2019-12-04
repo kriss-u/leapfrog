@@ -55,7 +55,7 @@ class Bird {
     this.y = this.y + this.direction;
 
     Bird.image.onload = () => {
-      this.ctx.clearRect(this.x, this.y - this.direction, 45, 32);
+      this.ctx.clearRect(this.x, this.y - this.direction, BIRD_WIDTH, BIRD_HEIGHT);
       // this.ctx.drawImage(image, 0, 0, BIRD_WIDTH, BIRD_HEIGHT, this.x, this.y, BIRD_WIDTH, BIRD_HEIGHT);
       this.ctx.drawImage(Bird.image, BIRD_WIDTH * (Math.floor(this.currentFrame) % 3), 0, BIRD_WIDTH, BIRD_HEIGHT, this.x, this.y, BIRD_WIDTH, BIRD_HEIGHT);
       this.currentFrame += 0.1;
@@ -63,19 +63,20 @@ class Bird {
   }
 
   draw() {
+    this.previousY = this.y;
     Bird.image.onload = () => {
-      // this.ctx.drawImage(image, 0, 0, BIRD_WIDTH, BIRD_HEIGHT, this.x, this.y, BIRD_WIDTH, BIRD_HEIGHT);
+      this.ctx.clearRect(this.x, this.previousY, BIRD_WIDTH, BIRD_HEIGHT);
       this.ctx.drawImage(Bird.image, BIRD_WIDTH * (Math.floor(this.currentFrame) % 3), 0, BIRD_WIDTH, BIRD_HEIGHT, this.x, this.y, BIRD_WIDTH, BIRD_HEIGHT);
       this.currentFrame += 0.1;
     }
   }
   update() {
-    if (this.game.currentState === Game.states.GAME_SCREEN) {
-      this.hopPixels = 0;
-      this.y = this.previousY;
-    } else {
-      this.hopPixels = 15;
-    }
+    // if (this.game.currentState === Game.states.GAME_SCREEN) {
+    //   this.hopPixels = 0;
+    //   this.y = this.previousY;
+    // } else {
+    //   this.hopPixels = 15;
+    // }
   }
 
   handleInput() {

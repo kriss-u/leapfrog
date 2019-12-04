@@ -12,9 +12,10 @@ class GameLayer {
     this.score = null;
     this.backgroundScroll = null;
     this.pipes = [];
-    this.currentState = Game.states.START_SCREEN;
-    this.lastPipeSpawnedTime = new Date();
+    // this.currentState = Game.states.START_SCREEN;
+    this.lastPipeSpawnedTime = new Date(0);
     this.currentTime = new Date();
+    this.currentPipePositionX = 600;
     this.init();
   }
 
@@ -75,7 +76,7 @@ class GameLayer {
     this.pipes = [];
     this.score = null;
     this.backgroundScroll = null;
-    this.currentState = Game.states.START_SCREEN;
+    // this.currentState = Game.states.START_SCREEN;
   }
 
   createGameObjects() {
@@ -85,27 +86,32 @@ class GameLayer {
   }
 
   clearScreen() {
-    switch (this.currentState) {
+    switch (this.game.currentState) {
       case Game.states.START_SCREEN:
       case Game.states.END_SCREEN:
         break;
-      default:
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      case Game.states.GAME_SCREEN:
+        // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         break;
     }
   }
   render() {
-    switch (this.currentState) {
+    switch (this.game.currentState) {
       case Game.states.START_SCREEN:
         this.bird.animate();
-        this.backgroundScroll.draw();
         this.score.draw();
+        this.backgroundScroll.draw();
         break;
 
       case Game.states.GAME_SCREEN:
+
+        // this.backgroundScroll.draw();
+        // this.score.draw();
+        this.createPipes();
+        this.pipes.forEach((pipe) => pipe.draw());
+        // this.backgroundScroll.draw();
         this.bird.draw();
-        this.backgroundScroll.draw();
-        this.score.draw();
+        break;
 
       case Game.states.END_SCREEN:
         break;
@@ -118,10 +124,14 @@ class GameLayer {
   update() {
     switch (this.game.currentState) {
       case Game.states.START_SCREEN:
-        this.bird.update();
         break;
       case Game.states.GAME_SCREEN:
-        this.pipes.forEach((pipe) => { pipe.draw() });
+        // this.updatePipes();
+        this.backgroundScroll.draw();
+        this.updatePipes();
+
+        this.bird.draw();
+        this.score.draw();
         break;
       default:
         break;
@@ -131,13 +141,27 @@ class GameLayer {
   handleInput() {
     this.bird.handleInput();
   }
+  updatePipes() {
+    for (var i = 0; i < this.pipesCount; ++i) {
+      let pipe = this.pipes[i];
+      if (pipe.x <= -PIPE_WIDTH) {
+        this.pipes.splice(i, 1);
+      }
+      else {
+        pipe.update();
+      }
+    }
+  }
 
   createPipes() {
-    if (this.currentDurationSinceLastSpawn >= PIPE_INTERVAL) {
-      let x = 400;
-      let y = getRandomNumberBetween(MINIMUM_POSITION_OFFSET, this.canvas.height - GROUND_HEIGHT - MINIMUM_POSITION_OFFSET);
+    this.currentTime = new Date();
+    if (this.pipesCount <= 3 && this.currentDurationSinceLastSpawn >= PIPE_INTERVAL) {
+      this.lastPipeSpawnedTime = this.currentTime;
+      let x = this.currentPipePositionX;
+      let y = getRandomNumberBetween(MINIMUM_POSITION_OFFSET, this.canvas.height - GROUND_HEIGHT - MINIMUM_POSITION_OFFSET - PIPE_DIFFERENCE);
       let pipe = new Pipe(this.game, this.ctx, x, y);
       this.pipes.push(pipe);
+      this.currentPipePositionX += PIPE_DISTANCE;
     }
   }
 

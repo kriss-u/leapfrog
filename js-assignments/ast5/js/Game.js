@@ -11,6 +11,7 @@ class Game {
     this.parentElement.appendChild(this.element);
 
     this.isSpaceBarPressed = false;
+    this.currentState = Game.states.START_SCREEN;
   }
   static get width() {
     return 480;

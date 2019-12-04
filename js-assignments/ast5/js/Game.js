@@ -5,102 +5,63 @@ function getRandomNumberBetween(min, max) {
 }
 
 class Game {
-  constructor(parentElement, width, height) {
+  constructor(parentElement) {
     this.parentElement = parentElement;
     this.element = this.createElement();
     this.parentElement.appendChild(this.element);
 
-    this.width = width;
-    this.height = height;
+    this.isInProgress = undefined;
+    this.currentState = undefined;
+    this.animationFrame = undefined;
+
     this.states = GAME_STATES;
-    this.init();
-  }
 
+    // this.init();
+  }
+  static get width() {
+    return 480;
+  }
+  static get height() {
+    return 640;
+  }
+  static get states() {
+    return GAME_STATES;
+  }
   init() {
-    this.reset();
-    this.initializeInputHandlers();
-    this.createGameObjects();
-  }
-
-  reset() {
-    this.resetState();
-  }
-
-  resetState() {
-    this.isInProgress = true;
-    this.currentState = this.states.START_SCREEN;
-    this.animationFrame = null;
-  }
-
-  clearScreen() {
-    switch (this.currentState) {
-      case this.states.START_SCREEN:
-      case this.states.END_SCREEN:
-        break;
-
-      case this.states.GAME_SCREEN:
-        this.parentElement.removeChild(this.element);
-        break;
-    }
-  }
-
-  start() {
-    if (!this.isInProgress) {
-      this.isInProgress = true;
-      this.loop();
-    }
+    this.createElement();
+    this.createGameLayers();
+    this.render();
   }
 
   createElement() {
     const element = document.createElement('div');
     element.classList.add('game');
-    element.style.width = this.width + 'px';
-    element.style.height = this.height + 'px';
+    element.style.width = Game.width + 'px';
+    element.style.height = Game.height + 'px';
     return element;
   }
 
-  createGameObjects() {
-    // Create a new background canvas
+  createGameLayers() {
     this.background = new Background(this);
-
     this.gameLayer = new GameLayer(this);
   }
 
-  loop() {
-    if (this.isInProgress) {
-      this.animationFrame = window.requestAnimationFrame(this.loop.bind(this));
-    }
-    this.clearScreen();
-    this.render();
-  }
-
   render() {
-    switch (this.currentState) {
-      case this.states.START_SCREEN:
-        this.background.draw();
-        this.gameLayer.backgroundScroll.draw();
-        break;
-    }
+    this.background.draw();
   }
 
-  initializeInputHandlers() {
-    document.addEventListener('keydown', this.keyDownHandler.bind(this));
-  }
+  // initializeInputHandlers() {
+  //   document.addEventListener('keydown', this.keyDownHandler.bind(this));
+  // }
 
-  keyDownHandler(e) {
-    if (e.key === ' ') {
-      this.consoleLog("Space Entered!");
-    }
-  }
-
-
-  consoleLog(value) {
-    console.log(value);
-  }
-
+  // keyDownHandler(e) {
+  //   if (e.key === ' ') {
+  //     this.consoleLog("Space Entered!");
+  //   }
+  // }
 }
 
 
-const game = new Game(document.getElementById('app'), 480, 640);
-game.start();
+const game = new Game(document.getElementById('app'));
+game.init();
 // game.consoleLog(game.ctx);

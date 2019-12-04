@@ -6,9 +6,14 @@ class Background {
     this.parentElement = this.game.element;
     this.x = 0;
     this.y = -BACKGROUND_SCROLL_OFFSET;
-    this.width = this.game.width;
-    this.height = this.game.height;
     this.init();
+  }
+
+  static get width() {
+    return Game.width;
+  }
+  static get height() {
+    return Game.height;
   }
 
   init() {
@@ -19,8 +24,8 @@ class Background {
 
   createCanvas() {
     const canvas = document.createElement('canvas');
-    canvas.width = this.width;
-    canvas.height = this.height;
+    canvas.width = Background.width;
+    canvas.height = Background.height;
     canvas.style.zIndex = '-1';
     return canvas;
   }
@@ -28,7 +33,7 @@ class Background {
   draw() {
     const backgroundImage = new Image();
     backgroundImage.onload = () => {
-      this.ctx.drawImage(backgroundImage, this.x, this.y, this.width, this.height);
+      this.ctx.drawImage(backgroundImage, this.x, this.y, Background.width, Background.height);
     }
     backgroundImage.src = 'images/background.png';
   }

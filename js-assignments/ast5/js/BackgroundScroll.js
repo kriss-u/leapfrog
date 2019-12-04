@@ -1,14 +1,17 @@
-const GROUND_WIDTH = 37;
-const GROUND_HEIGHT = 128;
+'use strict';
+
 let imgWidth = 0;
 let scrollSpeed = 3;
+
 class BackgroundScroll {
-  constructor(Game, ctx) {
-    this.Game = Game;
+  constructor(game, ctx) {
+    this.game = game;
     this.ctx = ctx;
+    this.canvas = this.ctx.canvas;
     this.x = 0;
-    this.y = 512;
+    this.y = this.canvas.height - BACKGROUND_SCROLL_OFFSET;
     this.currentFrame = 0;
+    this.init();
   }
   init() {
     this.draw();
@@ -23,7 +26,7 @@ class BackgroundScroll {
         imgWidth = 0;
     }
     image.src = '../images/ground-full.png';
-    if (this.Game.currentState !== this.Game.states.END_SCREEN)
+    if (this.game.currentState !== this.game.states.END_SCREEN)
       window.requestAnimationFrame(this.draw.bind(this));
   }
 }

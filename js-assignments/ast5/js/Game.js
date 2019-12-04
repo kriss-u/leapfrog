@@ -1,9 +1,9 @@
 'use strict';
-const GAME_STATES = {
-  START_SCREEN: 0,
-  GAME_SCREEN: 1,
-  END_SCREEN: 2,
+
+function getRandomNumberBetween(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
+
 class Game {
   constructor(parentElement, width, height) {
     this.parentElement = parentElement;
@@ -16,6 +16,7 @@ class Game {
     this.currentState = undefined;
     this.animationFrame = null;
     this.states = GAME_STATES;
+    this.init();
   }
 
   init() {
@@ -100,6 +101,5 @@ class Game {
 
 
 const game = new Game(document.getElementById('app'), 480, 640);
-game.init();
 
 // game.consoleLog(game.ctx);

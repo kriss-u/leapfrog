@@ -1,11 +1,13 @@
 'use strict';
 
 class Background {
-  constructor(Game) {
-    this.Game = Game;
-    this.parentElement = this.Game.element;
-    this.width = this.Game.width;
-    this.height = this.Game.height;
+  constructor(game) {
+    this.game = game;
+    this.parentElement = this.game.element;
+    this.x = 0;
+    this.y = -BACKGROUND_SCROLL_OFFSET;
+    this.width = this.game.width;
+    this.height = this.game.height;
     this.init();
   }
 
@@ -27,7 +29,7 @@ class Background {
   draw() {
     const backgroundImage = new Image();
     backgroundImage.onload = () => {
-      this.ctx.drawImage(backgroundImage, 0, 0, this.width, this.height);
+      this.ctx.drawImage(backgroundImage, this.x, this.y, this.width, this.height);
     }
     backgroundImage.src = '../images/background.png';
   }

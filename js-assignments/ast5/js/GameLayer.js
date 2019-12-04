@@ -1,11 +1,11 @@
 'use strict';
 
 class GameLayer {
-  constructor(Game) {
-    this.Game = Game;
-    this.parentElement = this.Game.element;
-    this.width = this.Game.width;
-    this.height = this.Game.height;
+  constructor(game) {
+    this.game = game;
+    this.parentElement = this.game.element;
+    this.width = this.game.width;
+    this.height = this.game.height;
     this.init();
   }
 
@@ -14,14 +14,9 @@ class GameLayer {
     this.parentElement.appendChild(this.canvas);
     this.ctx = this.canvas.getContext('2d');
 
-    this.bird = new Bird(this.Game, this.ctx);
-    this.backgroundScroll = new BackgroundScroll(this.Game, this.ctx);
-    this.pipe = new Pipe(this.Game, this.ctx);
-
-    this.bird.init();
-    this.backgroundScroll.init();
-    this.pipe.init();
-
+    this.bird = new Bird(this.game, this.ctx);
+    this.backgroundScroll = new BackgroundScroll(this.game, this.ctx);
+    this.pipe = new Pipe(this.game, this.ctx);
   }
 
   createCanvas() {

@@ -15,6 +15,7 @@ class Helix {
     this.gapBetweenCircle = GAP_BETWEEN_CIRCLE;
     this.initialPositionY = INITIAL_Y;
     this.dPhase = D_PHASE;
+    this.colors = ['#ffae73', '#fea978', '#fea57c', '#fea081', '#fe9b86', '#fa968b', '#f59190', '#f08c95', '#eb879a', '#e17da4'];
 
     this.init();
   }
@@ -38,7 +39,7 @@ class Helix {
       let currentPhase = 0;
 
       for (let j = 0; j < this.numColumns; ++j) {
-        const circle = new Circle(this, inPhase);
+        const circle = new Circle(this, inPhase, this.colors[i]);
         currentPositionX += this.gapBetweenCircle;
         circle.x = currentPositionX;
         circle.y = currentPositionY;

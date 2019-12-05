@@ -25,12 +25,12 @@ class Helix {
     this.canvas.height = this.height;
     this.ctx.fillStyle = '#043A4A';
     this.ctx.fillRect(0, 0, this.width, this.height);
-    this.generateCircles(true);
-    this.generateCircles(false);
+    this.generateCircles(0);
+    this.generateCircles(Math.PI);
     this.loop();
   }
 
-  generateCircles(inPhase) {
+  generateCircles(phase) {
     let currentPositionY = this.initialPositionY;
     for (let i = 0; i < this.numRows; ++i) {
       currentPositionY += this.gapBetweenCircle;
@@ -39,7 +39,7 @@ class Helix {
       let currentPhase = 0;
 
       for (let j = 0; j < this.numColumns; ++j) {
-        const circle = new Circle(this, inPhase, this.colors[i]);
+        const circle = new Circle(this, phase, this.colors[i]);
         currentPositionX += this.gapBetweenCircle;
         circle.x = currentPositionX;
         circle.y = currentPositionY;

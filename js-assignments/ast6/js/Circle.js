@@ -1,5 +1,5 @@
 class Circle {
-  constructor(helix, inPhase, color) {
+  constructor(helix, phase, color) {
     this.helix = helix;
     this.ctx = this.helix.ctx;
     this.radius = this.helix.radiusOfCircles;
@@ -7,8 +7,8 @@ class Circle {
     this.radiusAmplitude = RADIUS_AMPLITUDE;
     this.x = INITIAL_X;
     this.y = INITIAL_Y;
-    this.phase = inPhase ? 0 : Math.PI;
-
+    // this.phase = inPhase ? 0 : Math.PI;
+    this.phase = phase;
     this.currentPositionX = 0;
     this.currentPositionY = INITIAL_Y;
 

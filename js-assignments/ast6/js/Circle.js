@@ -26,13 +26,13 @@ class Circle {
     // this.ctx.closePath();
     this.ctx.fill();
   }
+
   oscillate() {
+    this.currentPositionX = ++this.currentPositionX % 180;
+    // this.currentPositionX %= 180;
 
-    this.currentPositionX++;
-    this.currentPositionX %= 180;
 
-
-    this.y = this.amplitude * Math.sin(this.speed * toRad(this.currentPositionX)) + this.phase + this.currentPositionY;
+    this.y = this.amplitude * Math.sin(this.speed * toRad(this.currentPositionX) + this.phase) + this.currentPositionY;
     this.radius = (this.radiusAmplitude * Math.cos(this.speed * toRad(this.currentPositionX) + this.phase) + this.radiusAmplitude) / 2;
 
     this.currentFrame++;
